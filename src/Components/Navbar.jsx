@@ -2,7 +2,10 @@
 
 function Navbar() {
   return (
-    <div>Navbar</div>
+    <section className="navbar">
+        
+
+    </section>
   )
 }
 
