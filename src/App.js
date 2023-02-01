@@ -1,46 +1,38 @@
-
-import './App.css';
+import "./App.css";
 // React
-import {Route, Routes} from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
 // Components
-import Navbar from './Components/Navbar';
+import Navbar from "./Components/Navbar";
 // Pages
-import Home from './Pages/Home';
-import Categories from './Pages/Categories';
-import Profile from './Pages/Profile';
-import Signup from './Pages/Signup';
-import Login from './Pages/Login';
-import NotFound from './Pages/NotFound';
-import Error from './Pages/Error';
-
-
+import Home from "./Pages/Home";
+import Categories from "./Pages/Categories";
+import Profile from "./Pages/Profile";
+import Signup from "./Pages/Signup";
+import Login from "./Pages/Login";
+import NotFound from "./Pages/NotFound";
+import Error from "./Pages/Error";
+import IsPrivate from "./Components/IsPrivate";
 
 function App() {
   return (
     <div className="App">
-
       <div id="logo-banner">
         <img src="../images/furnity-logo.png" alt="furnity-logo" />
       </div>
-      <Navbar/>
-<Routes>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
+        {/* Auth Routes */}
+        <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>}
+        />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
 
-  <Route path="/" element={<Home />} />
-  <Route path="/categories" element={<Categories/>}/>
-               {/* Auth Routes */}
-  <Route path="/profile" element={<Profile/>}/>
-  <Route path="/signup" element={<Signup/>}/>
-  <Route path="/login" element={<Login/>}/>
-
-               {/* Error Routes */}
-  <Route path="/error" element={<Error/>}/>
-  <Route path="*" element={<NotFound/>}/>
-
-
-
- 
-</Routes>
-    
+        {/* Error Routes */}
+        <Route path="/error" element={<Error />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
