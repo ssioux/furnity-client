@@ -1,0 +1,26 @@
+.navbar {
+  height: 50px;
+  color: white;
+  background-color: rgb(5, 5, 185);
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-list {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-list ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-list a {
+  font-family: 'Dosis', sans-serif;
+  text-decoration: none;
+  margin-right: 20px;
+  margin-left: 20px;
+  color: white;
+}

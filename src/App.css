@@ -19,3 +19,10 @@ html { background-color: #000; }
 .App {
   text-align: center;
 }
+
+#logo-banner {
+  height: 200px;
+}
+#logo-banner img {
+  height: 100%;
+}
