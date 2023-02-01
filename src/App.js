@@ -20,7 +20,7 @@ function App() {
     <div className="App">
 
       <div id="logo-banner">
-        <img src="../furnity-logo.png" alt="furnity-logo" />
+        <img src="../images/furnity-logo.png" alt="furnity-logo" />
       </div>
       <Navbar/>
 <Routes>

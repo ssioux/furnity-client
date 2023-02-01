@@ -3,6 +3,8 @@
                     - CHROMA -
 background-color: papayawhip;
 background-color: rgb(21, 21, 170);
+color: white;
+color: black;
 
 */
 
@@ -11,6 +13,7 @@ background-color: rgb(21, 21, 170);
 
 body {
   min-height: 100vh;
+  width: 100vw;
   /* max-width: 400px; */
   background-color: papayawhip; 
   margin: 0 auto;
@@ -26,6 +29,7 @@ html { background-color: #000; }
 
 
 .App {
+  width: 100vw;
   text-align: center;
 }
 
@@ -36,8 +40,27 @@ html { background-color: #000; }
   height: 100%;
 }
 
-.centered-container {
+.general-container {
+  border: 1px solid red;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.centered-container {
+
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 0 auto;
+}
+.container-centered {
+  border: 1px solid blue; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.text-container {
+ margin: 30px;
 }
