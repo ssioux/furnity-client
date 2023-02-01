@@ -1,9 +1,13 @@
 /* 
                     - CHROMA -
 background-color: papayawhip;
-background-color: rgb(21, 21, 170);
+background-color: rgb(21, 21, 170); (blue)
+background-color: #516efd;  (Light-blue)
 color: white;
 color: black;
+
+box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
 */
 
@@ -56,3 +60,23 @@ html {
 .text-container {
   margin: 30px;
 }
+
+/* ******************************** Buttons ********************** */
+.general-btn-blue {
+  cursor: pointer;
+  width: 100%;
+  padding: 5px;
+  margin-top: 20px;
+
+ 
+  background-color: #516efd;
+  color: white;
+  border-radius: 10px;
+}
+
+.general-btn-blue:hover {
+  background-color: rgb(21, 21, 170);
+  color: white;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+ }
