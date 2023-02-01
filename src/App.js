@@ -7,6 +7,11 @@ import Navbar from './Components/Navbar';
 // Pages
 import Home from './Pages/Home';
 import Categories from './Pages/Categories';
+import Profile from './Pages/Profile';
+import Signup from './Pages/Signup';
+import Login from './Pages/Login';
+import NotFound from './Pages/NotFound';
+import Error from './Pages/Error';
 
 
 
@@ -22,6 +27,17 @@ function App() {
 
   <Route path="/" element={<Home />} />
   <Route path="/categories" element={<Categories/>}/>
+               {/* Auth Routes */}
+  <Route path="/profile" element={<Profile/>}/>
+  <Route path="/signup" element={<Signup/>}/>
+  <Route path="/login" element={<Login/>}/>
+
+               {/* Error Routes */}
+  <Route path="/error" element={<Error/>}/>
+  <Route path="*" element={<NotFound/>}/>
+
+
+
  
 </Routes>
     

@@ -1,3 +1,12 @@
+
+/* 
+                    - CHROMA -
+background-color: papayawhip;
+background-color: rgb(21, 21, 170);
+
+*/
+
+
 /* ************************{ General configuration }*********************/
 
 body {
@@ -25,4 +34,10 @@ html { background-color: #000; }
 }
 #logo-banner img {
   height: 100%;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }

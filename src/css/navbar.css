@@ -1,7 +1,7 @@
 .navbar {
   height: 50px;
   color: white;
-  background-color: rgb(5, 5, 185);
+  background-color: rgb(21, 21, 170);
   display: flex;
   justify-content: space-around;
 }
