@@ -49,8 +49,8 @@ function Signup() {
   };
 
   return (
-    <section id="sign-up-container">
-      <div className="sign-up-container">
+    <section className="general-container">
+      <div className="form-container">
         <form >
           <h3>Sign-Up</h3>
 

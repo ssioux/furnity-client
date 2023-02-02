@@ -1,6 +1,6 @@
 function NotFound() {
   return (
-    <section className="general-container">
+    <section className="error-page-container">
       <div className="centered-container">
         <img
           src="../images/notFound.png"
