@@ -26,6 +26,7 @@ function Navbar() {
             <Link to="/" onClick={handleLogout}>LOGOUT</Link>
             <Link to="/signup">SIGNUP</Link>
             <Link to="/login">LOGIN</Link>
+            <Link to="/admin">ADMIN</Link>
 
     </section>
   )

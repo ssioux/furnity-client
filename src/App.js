@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 // Components
 import Navbar from "./Components/Navbar";
+import IsPrivate from "./Components/IsPrivate";
 // Pages
 import Home from "./Pages/Home";
 import Categories from "./Pages/Categories";
@@ -11,7 +12,7 @@ import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import NotFound from "./Pages/NotFound";
 import Error from "./Pages/Error";
-import IsPrivate from "./Components/IsPrivate";
+
 
 function App() {
   return (
