@@ -21,6 +21,7 @@ function AuthWrapper(props) {
     setIsFetching(true);
     try {
       const response = await verifyService();
+      console.log("🚀 r", response)
 
       setIsLoggedIn(true);
       setUser(response.data);

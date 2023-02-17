@@ -1,14 +1,14 @@
 // CSS
 import "../css/navbar.css"
 // React
-import {Link, useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 // Context
 import {useContext} from "react";
 import {AuthContext} from "../context/auth.context"
 
 
 function Navbar() {
-  const navigate = useNavigate();
+
   const { authenticateUser } = useContext(AuthContext);
 
   const handleLogout = () => {

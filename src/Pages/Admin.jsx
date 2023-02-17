@@ -1,6 +1,11 @@
 function Admin() {
   return (
-    <div>Admin</div>
+    <section>
+
+    <h2>Admin</h2>
+    </section>
+
+
   )
 }
 

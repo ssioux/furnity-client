@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 // Components
 import Navbar from "./Components/Navbar";
 import IsPrivate from "./Components/IsPrivate";
+import IsAdmin from "./Components/IsAdmin";
 // Pages
 import Home from "./Pages/Home";
 import Categories from "./Pages/Categories";
@@ -12,6 +13,7 @@ import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import NotFound from "./Pages/NotFound";
 import Error from "./Pages/Error";
+import Admin from "./Pages/Admin";
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         {/* Auth Routes */}
         <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>}
+        />
+          <Route path="/admin" element={<IsAdmin> <Admin /> </IsAdmin>}
         />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
