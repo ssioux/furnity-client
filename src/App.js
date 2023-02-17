@@ -5,6 +5,10 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import IsPrivate from "./Components/IsPrivate";
 import IsAdmin from "./Components/IsAdmin";
+import Clients from "./Components/admin/Clients";
+import NewFurniture from "./Components/admin/NewFurniture";
+import Orders from "./Components/admin/Orders";
+import NewCategory from "./Components/admin/NewCategory";
 // Pages
 import Home from "./Pages/Home";
 import Categories from "./Pages/Categories";
@@ -14,6 +18,7 @@ import Login from "./Pages/Login";
 import NotFound from "./Pages/NotFound";
 import Error from "./Pages/Error";
 import Admin from "./Pages/Admin";
+
 
 
 function App() {
@@ -33,6 +38,12 @@ function App() {
         />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/new-category" element={<NewCategory/>} />
+        <Route path="/admin/new-furniture" element={<NewFurniture />} />
+        <Route path="/admin/orders" element={<Orders />} />
+        <Route path="/admin/clients" element={<Clients />} />
 
         {/* Error Routes */}
         <Route path="/error" element={<Error />} />
