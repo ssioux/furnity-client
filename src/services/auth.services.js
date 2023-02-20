@@ -1,5 +1,7 @@
 import service from "./config.services";
 
+// http://localhost:5005 baseUrl
+
 const singupService = (newUser) => {
   return service.post("/auth/signup", newUser);
 };
