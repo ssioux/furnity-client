@@ -83,8 +83,13 @@ html {
 /******************************* uploader cloudinary  **************/
 
  .uploader-img {
-  width: 50%;
+  width: 30%;
   margin: 0 auto;
   border-radius: 5%;
   border: 1px solid #000d56;
+}
+
+.loader {
+ 
+  margin:0 auto;
 }
