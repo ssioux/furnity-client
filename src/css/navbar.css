@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css?family=Raleway";
 
 section.navbar {
+  position: relative;
   height: 60px;
   font-family: Raleway;
   margin: 0 auto;
@@ -9,6 +10,9 @@ section.navbar {
   justify-content: center;
   align-items: center;
   background-color: rgb(21, 21, 170);
+  z-index: 99;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 section.navbar a {

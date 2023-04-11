@@ -1,5 +1,10 @@
 @import "https://fonts.googleapis.com/css?family=Raleway";
 
+.general-admin {
+  background-color: rgb(214, 175, 111);
+  color:white;
+}
+
 section.adminNav {
     height: 30px;
     font-family: Raleway;

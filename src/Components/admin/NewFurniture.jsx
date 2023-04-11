@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 
 function NewFurniture() {
   return (
-    <div>
+    <div className="general-admin">
     <section className="adminNav">
 
     <Link to="/admin/new-category">New Category</Link>
@@ -15,9 +15,17 @@ function NewFurniture() {
     <Link to="/admin/clients">Clients</Link>
 
     </section>
-    <section>
-        <h1>New-Furniture</h1>
-    </section>
+    <section className="general-container">
+        <div className="form-container">
+          <form>
+            <h3>Create a New Furniture</h3>
+
+           
+
+           
+          </form>
+        </div>
+      </section>
     </div>
 
   )

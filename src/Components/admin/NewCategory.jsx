@@ -71,7 +71,7 @@ function NewCategory() {
     }
   };
   return (
-    <div>
+    <div className="general-admin">
       <section className="adminNav">
         <Link to="/admin/new-category">New Category</Link>
         <Link to="/admin/new-furniture">New Furniture</Link>
@@ -130,7 +130,7 @@ function NewCategory() {
             {pictureURL !== "" ? (
               <img src={pictureURL} alt="pict" className="uploader-img" />
             ) : (
-              <p> [ No Picture Selected ]</p>
+              ""
             )}
 
             <button
