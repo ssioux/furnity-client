@@ -61,7 +61,7 @@ function NewCategory() {
 
     try {
       await createCategoryService(newCategory);
-      // navigate("/login");
+      navigate("/categories");
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.message);
@@ -138,7 +138,7 @@ function NewCategory() {
               onClick={handleNewCategory}
               className="general-btn-blue"
             >
-              Register
+            Add Category
             </button>
             {errorMessage !== "" && (
               <p className="error-message"> * {errorMessage}</p>
