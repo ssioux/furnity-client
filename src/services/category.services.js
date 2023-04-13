@@ -9,7 +9,7 @@ const createCategoryService = (categoryToAdd) => {
     return service.post("/api/category/create", categoryToAdd)
 }
 const detailsCategoryService = (categoryId) => {
-     return service.get(`/api/category/${categoryId}/details`)
+    return service.get(`/api/category/${categoryId}/details`)
 }
 const updateCategoryService = (categoryId, categoryUpdate) => {
     return service.patch(`/api/category/${categoryId}/update`, categoryUpdate)
