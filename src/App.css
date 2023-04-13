@@ -57,6 +57,12 @@ html {
   justify-content: center;
 }
 
+.general-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
 .text-container {
   margin: 30px;
 }
@@ -96,4 +102,11 @@ html {
 
 .pp .form-container {
   color: white;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
