@@ -31,10 +31,8 @@ function Categories() {
       {categories.map((eachCategory) => {
         return (
           <div key={eachCategory._id} className="category-box">
-             
-              <img src={eachCategory.image} alt="category-pic" />
+            <img src={eachCategory.image} alt="category-pic" />
             <h2>{eachCategory.name}</h2>
-          
           </div>
         );
       })}

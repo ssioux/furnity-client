@@ -72,9 +72,7 @@ html {
   cursor: pointer;
   width: 100%;
   padding: 5px;
-  
 
- 
   background-color: #516efd;
   color: white;
   border-radius: 10px;
@@ -85,10 +83,10 @@ html {
   color: white;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
- }
+}
 /******************************* uploader cloudinary  **************/
 
- .uploader-img {
+.uploader-img {
   width: 30%;
   margin: 0 auto;
   border-radius: 5%;
@@ -96,8 +94,7 @@ html {
 }
 
 .loader {
- 
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 .pp .form-container {
