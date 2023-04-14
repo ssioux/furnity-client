@@ -1,5 +1,5 @@
 // css
-import "../css/category.css"
+import "../css/category.css";
 
 // Hooks
 import { useState, useEffect } from "react";
@@ -27,16 +27,18 @@ function Categories() {
     }
   };
   return (
-    <div className="general-container wrap">
+    <section className="category-container wrap">
       {categories.map((eachCategory) => {
         return (
           <div key={eachCategory._id} className="category-box">
+             
+              <img src={eachCategory.image} alt="category-pic" />
             <h2>{eachCategory.name}</h2>
-            <img src={eachCategory.image} alt="category-pic" />
+          
           </div>
         );
       })}
-    </div>
+    </section>
   );
 }
 

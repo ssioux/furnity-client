@@ -1,5 +1,37 @@
+.category-container {
+  display: flex;
+  height: 100vh;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
 .category-box {
-    border: 1px solid red;
-    width: 30%;
-    height: 50%;
+  border: 1px solid red;
+  width: 350px;
+  height: 250px;
+  overflow: hidden;
+  margin: 20px;
+  position: relative;
+}
+
+.category-box h2 {
+  display: none;
+  top: 40%;
+  left: 40%;
+  position: absolute;
+}
+.category-box:hover h2 {
+  display: block;
+}
+
+.category-box img {
+    filter: grayscale(70%);
+  width: 100%;
+  transition: 0.5s all ease-in-out;
+  border-radius: 20px;
+}
+.category-box:hover img {
+  
+  transform: scale(1.5);
+  filter: grayscale(0%);
 }
