@@ -6,12 +6,16 @@ import {useContext} from "react";
 import {AuthContext} from "../../context/auth.context"
 
 const Ul = styled.ul`
+
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
+  z-index: 19;
+
   li {
     padding: 18px 10px;
   }
+
   @media (max-width: 768px) {
     flex-flow: column nowrap;
     background-color: #0D2538;
@@ -48,7 +52,6 @@ const RightNav = ({ open }) => {
             <Link to="/signup"><li>SIGNUP</li></Link>
             <Link to="/login"><li>LOGIN</li></Link>
             <Link to="/admin"><li>ADMIN</li></Link>
-
     </Ul>
   )
 }
