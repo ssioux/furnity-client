@@ -34,7 +34,7 @@ const Ul = styled.ul`
   }
 `;
 
-const RightNav = ({ open }) => {
+const RightNav = ({ open, setOpen }) => {
 
   const { authenticateUser } = useContext(AuthContext);
 
@@ -47,13 +47,13 @@ const RightNav = ({ open }) => {
   return (
     <Ul open={open} className="navbar animation">
       
-            <Link to="/"><li>HOME</li></Link>
-            <Link to="/categories"><li>CATEGORIES</li></Link>
-            <Link to="/profile"><li>PROFILE</li></Link>
-            <Link to="/" onClick={handleLogout}><li>LOGOUT</li></Link>
-            <Link to="/signup"><li>SIGNUP</li></Link>
-            <Link to="/login"><li>LOGIN</li></Link>
-            <Link to="/admin"><li>ADMIN</li></Link>
+            <Link to="/" onClick={()=> setOpen(!open)}><li>HOME</li></Link>
+            <Link to="/categories" onClick={()=> setOpen(!open)}><li>CATEGORIES</li></Link>
+            <Link to="/profile" onClick={()=> setOpen(!open)}><li>PROFILE</li></Link>
+            <Link to="/" onClick={handleLogout} ><li>LOGOUT</li></Link>
+            <Link to="/signup" onClick={()=> setOpen(!open)}><li>SIGNUP</li></Link>
+            <Link to="/login" onClick={()=> setOpen(!open)}><li>LOGIN</li></Link>
+            <Link to="/admin" onClick={()=> setOpen(!open)}><li>ADMIN</li></Link>
          
     </Ul>
   )
