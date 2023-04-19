@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Raleway";
 
-section.navbar {
+.navbar {
   position: relative;
   height: 60px;
   font-family: Raleway;
@@ -15,7 +15,7 @@ section.navbar {
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
-section.navbar a {
+.navbar a {
   color: #fff;
   text-decoration: none;
   font: 20px Raleway;
@@ -26,8 +26,8 @@ section.navbar a {
   cursor: pointer;
 }
 
-section.animation a:before,
-section.animation a:after {
+.animation a:before,
+.animation a:after {
   position: absolute;
   opacity: 0.5;
   height: 100%;
@@ -37,18 +37,18 @@ section.animation a:after {
   transition: all 0.3s;
 }
 
-section.animation a:before {
+.animation a:before {
   left: 0px;
   top: 0px;
 }
 
-section.animation a:after {
+.animation a:after {
   right: 0px;
   bottom: 0px;
 }
 
-section.animation a:hover:before,
-section.animation a:hover:after {
+.animation a:hover:before,
+.animation a:hover:after {
   opacity: 1;
   height: 2px;
   width: 100%;

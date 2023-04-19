@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import "../../css/navbar.css"
 // React
 import {Link} from "react-router-dom"
 // Context
@@ -44,7 +45,8 @@ const RightNav = ({ open }) => {
     authenticateUser();
   }
   return (
-    <Ul open={open}>
+    <Ul open={open} className="navbar animation">
+      
             <Link to="/"><li>HOME</li></Link>
             <Link to="/categories"><li>CATEGORIES</li></Link>
             <Link to="/profile"><li>PROFILE</li></Link>
@@ -52,6 +54,7 @@ const RightNav = ({ open }) => {
             <Link to="/signup"><li>SIGNUP</li></Link>
             <Link to="/login"><li>LOGIN</li></Link>
             <Link to="/admin"><li>ADMIN</li></Link>
+         
     </Ul>
   )
 }

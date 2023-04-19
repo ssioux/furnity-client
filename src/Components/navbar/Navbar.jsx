@@ -20,7 +20,7 @@ function Navbar() {
 
   
   return (
-    <Nav className="navbar animation">
+    <Nav>
          <div className="logo">
         Nav Bar
       </div>
