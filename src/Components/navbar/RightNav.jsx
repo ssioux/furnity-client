@@ -1,13 +1,12 @@
-import styled from 'styled-components';
-import "../../css/navbar.css"
+import styled from "styled-components";
+import "../../css/navbar.css";
 // React
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 // Context
-import {useContext} from "react";
-import {AuthContext} from "../../context/auth.context"
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 const Ul = styled.ul`
-
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
@@ -19,9 +18,9 @@ const Ul = styled.ul`
 
   @media (max-width: 768px) {
     flex-flow: column nowrap;
-    background-color: #0D2538;
+    background-color: #0d2538;
     position: fixed;
-    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+    transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 0;
     right: 0;
     height: 100vh;
@@ -35,28 +34,53 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open, setOpen }) => {
-
-  const { authenticateUser } = useContext(AuthContext);
+  const { authenticateUser, isLoggedIn } = useContext(AuthContext);
 
   const handleLogout = () => {
     // Removes the token from local storage
     localStorage.removeItem("authToken");
     // Reload the data from user
     authenticateUser();
-  }
+  };
+
   return (
     <Ul open={open} className="navbar animation">
-      
-            <Link to="/" onClick={()=> setOpen(!open)}><li>HOME</li></Link>
-            <Link to="/categories" onClick={()=> setOpen(!open)}><li>CATEGORIES</li></Link>
-            <Link to="/profile" onClick={()=> setOpen(!open)}><li>PROFILE</li></Link>
-            <Link to="/" onClick={handleLogout} ><li>LOGOUT</li></Link>
-            <Link to="/signup" onClick={()=> setOpen(!open)}><li>SIGNUP</li></Link>
-            <Link to="/login" onClick={()=> setOpen(!open)}><li>LOGIN</li></Link>
-            <Link to="/admin" onClick={()=> setOpen(!open)}><li>ADMIN</li></Link>
-         
+      {isLoggedIn ? (
+        <>
+          <Link to="/" onClick={() => setOpen(!open)}>
+            <li>HOME</li>
+          </Link>
+          <Link to="/categories" onClick={() => setOpen(!open)}>
+            <li>CATEGORIES</li>
+          </Link>
+          <Link to="/profile" onClick={() => setOpen(!open)}>
+            <li>PROFILE</li>
+          </Link>
+          <Link to="/" onClick={handleLogout}>
+            <li>LOGOUT</li>
+          </Link>
+          <Link to="/admin" onClick={() => setOpen(!open)}>
+            <li>ADMIN</li>
+          </Link>
+        </>
+      ) : (
+        <>
+          <Link to="/" onClick={() => setOpen(!open)}>
+            <li>HOME</li>
+          </Link>
+          <Link to="/categories" onClick={() => setOpen(!open)}>
+            <li>CATEGORIES</li>
+          </Link>
+          <Link to="/signup" onClick={() => setOpen(!open)}>
+            <li>SIGNUP</li>
+          </Link>
+          <Link to="/login" onClick={() => setOpen(!open)}>
+            <li>LOGIN</li>
+          </Link>
+        </>
+      )}
     </Ul>
-  )
-}
+  );
+};
 
-export default RightNav
+export default RightNav;
