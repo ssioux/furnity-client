@@ -7,7 +7,7 @@ import "./index.css";
 import App from "./App";
 
 // Context
-import { AuthWrapper } from './context/auth.context';
+import { AuthWrapper } from "./context/auth.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,4 +19,3 @@ root.render(
   </BrowserRouter>
   // </React.StrictMode>
 );
-
