@@ -1,34 +1,32 @@
 // CSS
 import "../../css/navbar.css"
-// React
-import {Link} from "react-router-dom"
-// Context
-import {useContext} from "react";
-import {AuthContext} from "../../context/auth.context"
 
+import styled from 'styled-components';
+import Burger from "./Burger"
+
+const Nav = styled.nav`
+  width: 100%;
+  height: 55px;
+  border-bottom: 2px solid #f1f1f1;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  .logo {
+    padding: 15px 0;
+  }`
 
 function Navbar() {
 
-  const { authenticateUser } = useContext(AuthContext);
 
-  const handleLogout = () => {
-    // Removes the token from local storage
-    localStorage.removeItem("authToken");
-    // Reload the data from user
-    authenticateUser();
-  }
+  
   return (
-    <section className="navbar animation">
+    <Nav className="navbar animation">
+         <div className="logo">
+        Nav Bar
+      </div>
+            <Burger />
 
-            <Link to="/">HOME</Link>
-            <Link to="/categories">CATEGORIES</Link>
-            <Link to="/profile">PROFILE</Link>
-            <Link to="/" onClick={handleLogout}>LOGOUT</Link>
-            <Link to="/signup">SIGNUP</Link>
-            <Link to="/login">LOGIN</Link>
-            <Link to="/admin">ADMIN</Link>
-
-    </section>
+    </Nav>
   )
 }
 
