@@ -34,7 +34,8 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open, setOpen }) => {
-  const { authenticateUser, isLoggedIn } = useContext(AuthContext);
+  const { authenticateUser, isLoggedIn, user } = useContext(AuthContext);
+  console.log("🚀 ~ file: RightNav.jsx:38 ~ RightNav ~ user:", user)
 
   const handleLogout = () => {
     // Removes the token from local storage
@@ -59,9 +60,10 @@ const RightNav = ({ open, setOpen }) => {
           <Link to="/" onClick={handleLogout}>
             <li>LOGOUT</li>
           </Link>
-          <Link to="/admin" onClick={() => setOpen(!open)}>
+          {user.role === "admin" && <Link to="/admin" onClick={() => setOpen(!open)}>
             <li>ADMIN</li>
-          </Link>
+          </Link>}
+          
         </>
       ) : (
         <>
