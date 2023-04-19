@@ -2,7 +2,7 @@ import "./App.css";
 // React
 import { Route, Routes } from "react-router-dom";
 // Components
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/navbar/Navbar";
 import IsPrivate from "./Components/IsPrivate";
 import IsAdmin from "./Components/IsAdmin";
 import Clients from "./Components/admin/Clients";

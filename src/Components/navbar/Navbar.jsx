@@ -1,10 +1,10 @@
 // CSS
-import "../css/navbar.css"
+import "../../css/navbar.css"
 // React
 import {Link} from "react-router-dom"
 // Context
 import {useContext} from "react";
-import {AuthContext} from "../context/auth.context"
+import {AuthContext} from "../../context/auth.context"
 
 
 function Navbar() {
