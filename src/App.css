@@ -105,14 +105,14 @@ html {
   display: flex;
   flex-wrap: wrap;
 }
-.logo{
-  display:none;
+.logo {
+  display: none;
 }
 @media (max-width: 768px) {
-#logo-banner {
-  display:none;
-}
-.logo {
-  display:block;
-}
+  #logo-banner {
+    display: none;
+  }
+  .logo {
+    display: block;
+  }
 }
