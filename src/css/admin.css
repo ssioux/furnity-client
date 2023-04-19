@@ -6,7 +6,7 @@
 }
 
 section.adminNav {
-  height: 30px;
+  height: 50px;
   font-family: Raleway;
   margin: 0 auto;
   display: flex;
@@ -29,3 +29,5 @@ section.adminNav a {
 section.adminNav a:hover {
   color: rgb(21, 21, 170);
 }
+
+
