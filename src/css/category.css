@@ -1,7 +1,9 @@
 .category-container {
+
   display: flex;
   height: 100%;
- margin: 0px 150px;
+  margin: 0px 150px;
+
 }
 
 .category-box {
@@ -35,4 +37,11 @@
 .category-box:hover img {
   transform: scale(1.5);
   filter: grayscale(0%);
+}
+
+@media (max-width: 768px) {
+  .category-container {
+
+   margin: 0;
+  }
 }

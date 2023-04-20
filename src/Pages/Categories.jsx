@@ -19,7 +19,7 @@ function Categories() {
     try {
       // Connexion to DB taken the category list
       const res = await listCategoryService();
-      console.log("🚀 ~ file: Categories.jsx:24 ~ getData ~ res:", res);
+      console.log("🚀 ~ getData ~ res:", res);
 
       setCategories(res.data);
     } catch (error) {
@@ -27,15 +27,18 @@ function Categories() {
     }
   };
   return (
-    <section className="category-container wrap">
-      {categories.map((eachCategory) => {
-        return (
-          <div key={eachCategory._id} className="category-box">
-            <img src={eachCategory.picture} alt="category-pic" />
-            <h2>{eachCategory.name}</h2>
-          </div>
-        );
-      })}
+    <section>
+      <h2 className="margin-top">Categories</h2>
+      <div className="category-container wrap">
+        {categories.map((eachCategory) => {
+          return (
+            <div key={eachCategory._id} className="category-box">
+              <img src={eachCategory.picture} alt="category-pic" />
+              <h2>{eachCategory.name}</h2>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }
