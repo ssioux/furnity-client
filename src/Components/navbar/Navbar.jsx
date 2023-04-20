@@ -22,7 +22,7 @@ function Navbar() {
   return (
     <Nav>
          <div className="logo">
-        Nav Bar
+        <img src="../../../images/furnity-logo.png" alt="mini-logo" />
       </div>
             <Burger />
 

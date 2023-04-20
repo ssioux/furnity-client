@@ -30,4 +30,8 @@ section.adminNav a:hover {
   color: rgb(21, 21, 170);
 }
 
-
+@media (max-width: 768px) {
+  section.adminNav a {
+    font: 14px Raleway;
+  }
+}

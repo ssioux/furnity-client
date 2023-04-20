@@ -113,6 +113,12 @@ html {
     display: none;
   }
   .logo {
+    width: 100px;
     display: block;
+     position:fixed;
+  }
+  .logo img {
+    width: 80%;
+   
   }
 }
