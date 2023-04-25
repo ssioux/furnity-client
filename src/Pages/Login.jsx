@@ -5,10 +5,10 @@ import { AuthContext } from "../context/auth.context";
 // Axios Services
 import { loginService } from "../services/auth.services";
 // CSS
-import "../css/login.css"
+import "../css/login.css";
 
 function Login() {
-
+  
   const { authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -55,8 +55,6 @@ function Login() {
 
   return (
     <section className="general-container">
- 
-
       <div className="form-container">
         <form>
           <h3>Log-In</h3>
@@ -82,7 +80,11 @@ function Login() {
             <p style={{ color: "red" }}>{errorMessage}</p>
           )}
 
-          <button type="submit" onClick={handleLogin} className="general-btn-blue">
+          <button
+            type="submit"
+            onClick={handleLogin}
+            className="general-btn-blue"
+          >
             Login
           </button>
         </form>

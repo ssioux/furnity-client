@@ -19,8 +19,6 @@ import NotFound from "./Pages/NotFound";
 import Error from "./Pages/Error";
 import Admin from "./Pages/Admin";
 
-
-
 function App() {
   return (
     <div className="App">
@@ -32,15 +30,29 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         {/* Auth Routes */}
-        <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>}
+        <Route
+          path="/profile"
+          element={
+            <IsPrivate>
+              {" "}
+              <Profile />{" "}
+            </IsPrivate>
+          }
         />
-          <Route path="/admin" element={<IsAdmin> <Admin /> </IsAdmin>}
+        <Route
+          path="/admin"
+          element={
+            <IsAdmin>
+              {" "}
+              <Admin />{" "}
+            </IsAdmin>
+          }
         />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
 
         {/* Admin Routes */}
-        <Route path="/admin/new-category" element={<NewCategory/>} />
+        <Route path="/admin/new-category" element={<NewCategory />} />
         <Route path="/admin/new-furniture" element={<NewFurniture />} />
         <Route path="/admin/orders" element={<Orders />} />
         <Route path="/admin/clients" element={<Clients />} />

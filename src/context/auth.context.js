@@ -1,4 +1,3 @@
-
 // React hooks
 import { createContext, useState, useEffect } from "react";
 // Services
@@ -11,7 +10,6 @@ function AuthWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
-  
 
   useEffect(() => {
     authenticateUser();
@@ -21,23 +19,17 @@ function AuthWrapper(props) {
     setIsFetching(true);
     try {
       const response = await verifyService();
-      console.log("🚀 r", response)
+      console.log("🚀 r", response);
 
       setIsLoggedIn(true);
       setUser(response.data);
       setIsFetching(false);
     } catch (error) {
-  
       setIsLoggedIn(false);
       setUser(null);
       setIsFetching(false);
     }
   };
-
-  
-
-
-
 
   const passedContext = {
     isLoggedIn,

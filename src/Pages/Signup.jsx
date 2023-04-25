@@ -1,6 +1,5 @@
-
 // CSS
-import "../css/signup.css"
+import "../css/signup.css";
 // React
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,19 +9,19 @@ import { singupService } from "../services/auth.services";
 function Signup() {
   const navigate = useNavigate();
 
- // input values
+  // input values
   const [usernameInput, setUsername] = useState("");
   const [emailInput, setEmail] = useState("");
   const [passwordInput, setPassword] = useState("");
-  const [confirmPasswordInput, setConfirmPassword] = useState("")
-// errorMessages from BE
+  const [confirmPasswordInput, setConfirmPassword] = useState("");
+  // errorMessages from BE
   const [errorMessage, setErrorMessage] = useState("");
-// Takes user info
+  // Takes user info
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-  const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value)
-// Send the input values to BE
+  const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+  // Send the input values to BE
   const handleSignup = async (e) => {
     e.preventDefault();
 
@@ -51,7 +50,7 @@ function Signup() {
   return (
     <section className="general-container">
       <div className="form-container">
-        <form >
+        <form>
           <h3>Sign-Up</h3>
 
           <div className="input-container">
@@ -83,28 +82,26 @@ function Signup() {
               type="password"
               onChange={handleConfirmPasswordChange}
             />
-            <label className={confirmPasswordInput && "filled"} htmlFor="password">
+            <label
+              className={confirmPasswordInput && "filled"}
+              htmlFor="password"
+            >
               Confirm password
             </label>
           </div>
 
-         
-
           <button
             type="submit"
             onClick={handleSignup}
-           className="general-btn-blue"
+            className="general-btn-blue"
           >
             Register
           </button>
           {errorMessage !== "" && (
             <p className="error-message"> * {errorMessage}</p>
           )}
-
         </form>
       </div>
-
-    
     </section>
   );
 }

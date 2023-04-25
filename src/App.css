@@ -37,7 +37,7 @@ html {
 }
 
 h2.margin-top {
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 #logo-banner {
@@ -119,10 +119,9 @@ h2.margin-top {
   .logo {
     width: 100px;
     display: block;
-     position:fixed;
+    position: fixed;
   }
   .logo img {
     width: 80%;
-   
   }
 }

@@ -27,7 +27,6 @@ function NewCategory() {
 
   // funtion that send the user picture to cloudinary and receive it
   const handlePictureChange = async (e) => {
-   
     setIsLoadingPicture(true);
 
     // Send the pic to cloudinary
@@ -37,14 +36,12 @@ function NewCategory() {
 
     try {
       const response = await uploadPictureService(sendObj);
-      
 
       // Receive the data.pic from cloudinary for show it in the form
       setPictureUrl(response.data.picture);
       // The process is finished
       setIsLoadingPicture(false);
     } catch (error) {
-    
       navigate("/error");
     }
   };
@@ -138,7 +135,7 @@ function NewCategory() {
               onClick={handleNewCategory}
               className="general-btn-blue"
             >
-            Add Category
+              Add Category
             </button>
             {errorMessage !== "" && (
               <p className="error-message"> * {errorMessage}</p>

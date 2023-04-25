@@ -19,8 +19,6 @@ function Categories() {
     try {
       // Connexion to DB taken the category list
       const res = await listCategoryService();
-      console.log("🚀 ~ getData ~ res:", res);
-
       setCategories(res.data);
     } catch (error) {
       navigate("/error");
