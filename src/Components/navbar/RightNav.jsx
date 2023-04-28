@@ -35,7 +35,6 @@ const Ul = styled.ul`
 
 const RightNav = ({ open, setOpen }) => {
   const { authenticateUser, isLoggedIn, user } = useContext(AuthContext);
-  console.log("🚀 ~ file: RightNav.jsx:38 ~ RightNav ~ user:", user)
 
   const handleLogout = () => {
     // Removes the token from local storage

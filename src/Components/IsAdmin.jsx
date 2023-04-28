@@ -6,9 +6,8 @@ import { AuthContext } from "../context/auth.context";
 import { Navigate } from "react-router-dom";
 
 function IsAdmin(props) {
-console.log("first")
+
   const { isLoggedIn, user } = useContext(AuthContext);
-  console.log("🚀 isAdmin ~ user", user)
   
 // verify if user is logged and also if is an admin.
   if (isLoggedIn === true && user.role === "admin") {
