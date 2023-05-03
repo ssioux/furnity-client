@@ -19,8 +19,11 @@ function AuthWrapper(props) {
     setIsFetching(true);
     try {
       const response = await verifyService();
+
       setIsLoggedIn(true);
+
       setUser(response.data);
+      
       setIsFetching(false);
     } catch (error) {
       setIsLoggedIn(false);
