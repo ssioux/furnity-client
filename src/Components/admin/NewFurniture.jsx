@@ -9,6 +9,8 @@ import { useState } from "react";
 import { uploadPictureService } from "../../services/upload.services";
 // Snipper Loading
 import GridLoader from "react-spinners/GridLoader";
+// Axios Services
+import { createFurnitureService } from "../../services/furniture.services";
 
 function NewFurniture() {
   const navigate = useNavigate();
@@ -48,13 +50,21 @@ function NewFurniture() {
   const handleNewFurniture = async (e) => {
     e.preventDefault();
 
-    // TODO connect to the service for create a new furniture
     const newFurniture = {
       name: furnitureNameInput,
       description: descriptionInput,
       picture: pictureURL,
       price: priceInput,
     };
+
+    try {
+      // Service that connect to the DB for create the New Furniture
+      await createFurnitureService(newFurniture);
+      // redirect to:
+      navigate("/categories");
+    } catch (error) {
+      console.log(error)
+    }
     
   };
 
