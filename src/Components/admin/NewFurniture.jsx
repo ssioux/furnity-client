@@ -79,17 +79,7 @@ function NewFurniture() {
                 Description
               </label>
             </div>
-            <div className="input-container">
-              <input
-                type="file"
-                onChange={handlePictureChange}
-                name="picture"
-              />
-              <label className="filled" htmlFor="picture">
-                Image
-              </label>
-            </div>
-
+            
             <div className="input-container">
               <input
                 value={priceInput}
@@ -100,6 +90,16 @@ function NewFurniture() {
                 htmlFor="price"
               >
                 Price
+              </label>
+            </div>
+            <div className="input-container">
+              <input
+                type="file"
+                onChange={handlePictureChange}
+                name="picture"
+              />
+              <label className="filled" htmlFor="picture">
+                Image
               </label>
             </div>
 
