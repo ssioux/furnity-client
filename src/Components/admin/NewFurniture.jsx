@@ -44,6 +44,19 @@ function NewFurniture() {
     }
   };
 
+  // Function that creates a new Furniture
+  const handleNewFurniture = async (e) => {
+    e.preventDefault();
+
+    const newFurniture = {
+      name: furnitureNameInput,
+      description: descriptionInput,
+      picture: pictureURL,
+      price: priceInput,
+    };
+    
+  };
+
   return (
     <div className="general-admin">
       <section className="adminNav">
@@ -122,6 +135,7 @@ function NewFurniture() {
             )}
 
             <button
+              onClick={handleNewFurniture}
               type="submit"
               className="general-btn-blue"
             >
