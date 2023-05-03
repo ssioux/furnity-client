@@ -48,6 +48,7 @@ function NewFurniture() {
   const handleNewFurniture = async (e) => {
     e.preventDefault();
 
+    // TODO connect to the service for create a new furniture
     const newFurniture = {
       name: furnitureNameInput,
       description: descriptionInput,
