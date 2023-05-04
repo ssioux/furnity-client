@@ -19,8 +19,8 @@ function NewFurniture() {
   const [furnitureNameInput, setFurnitureNameInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [priceInput, setPriceInput] = useState("");
-  const [categoryInput, setCategoryInput] = useState("");
-  const [listCategory, setListCategory] = useState("");
+  const [categoryInput, setCategoryInput] = useState();
+  const [listCategory, setListCategory] = useState([]);
 
   // Keep the picture from cloudinary
   const [pictureURL, setPictureUrl] = useState("");
@@ -91,6 +91,7 @@ function NewFurniture() {
     }
   };
 
+
   return (
     <div className="general-admin">
       <section className="adminNav">
@@ -141,11 +142,14 @@ function NewFurniture() {
               <label htmlFor="category">Choose Category</label>
 
               <select onChange={(e) => setCategoryInput(e.target.value)}>
-                {listCategory.map((opt) => (
+                {listCategory?.map((opt) => {
+                  return (
                   <option key={opt._id} value={opt._id}>
                     {opt.name}
                   </option>
-                ))}
+                  )
+                  
+                  })}
               </select>
             </div>
 
