@@ -26,6 +26,10 @@
   display: block;
 }
 
+.white {
+  color: white;
+}
+
 .category-box img {
   filter: grayscale(70%);
   width: 100%;

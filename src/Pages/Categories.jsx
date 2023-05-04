@@ -30,14 +30,16 @@ function Categories() {
       <div className="category-container wrap">
         {categories.map((eachCategory) => {
           return (
-            
-            <div className="category-box">
-              <Link to={`/category/${eachCategory._id}/furniture-list`} key={eachCategory._id}>
-              <img src={eachCategory.picture} alt="category-pic" />
-              <h2>{eachCategory.name}</h2>
-              </Link>
-            </div>
-          
+            <Link
+              to={`/category/${eachCategory._id}/furniture-list`}
+              key={eachCategory._id}
+              className="white"
+            >
+              <div className="category-box">
+                <img src={eachCategory.picture} alt="category-pic" />
+                <h2>{eachCategory.name}</h2>
+              </div>
+            </Link>
           );
         })}
       </div>
