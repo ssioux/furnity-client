@@ -23,7 +23,7 @@ function NewFurniture() {
   // Cloudinary loading
   const [isLoadingPicture, setIsLoadingPicture] = useState(false);
   // errorMessages from BE
-  // const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // funtion that send the user picture to cloudinary and receive it
   const handlePictureChange = async (e) => {
@@ -50,7 +50,7 @@ function NewFurniture() {
   const handleNewFurniture = async (e) => {
     e.preventDefault();
 
-    // TODO Create a new input: what category belongs & and the Validators in the BE for the Form
+    // TODO Create a new input: what category belongs.
     const newFurniture = {
       name: furnitureNameInput,
       description: descriptionInput,
@@ -64,8 +64,11 @@ function NewFurniture() {
       // redirect to:
       navigate("/categories");
     } catch (error) {
-      console.log(error)
-      navigate("/error")
+      if (error.response && error.response.status === 400) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        navigate("/error");
+      }
     }
     
   };
