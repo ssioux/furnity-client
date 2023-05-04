@@ -18,6 +18,7 @@ import Login from "./Pages/Login";
 import NotFound from "./Pages/NotFound";
 import Error from "./Pages/Error";
 import Admin from "./Pages/Admin";
+import EachCategoryList from "./Pages/EachCategoryList";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/category/:categoryId/furniture-list" element={<EachCategoryList/>} />
         {/* Auth Routes */}
         <Route
           path="/profile"

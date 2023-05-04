@@ -3,7 +3,7 @@ import "../css/category.css";
 
 // Hooks
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Axios Services
 import { listCategoryService } from "../services/category.services";
 
@@ -30,10 +30,14 @@ function Categories() {
       <div className="category-container wrap">
         {categories.map((eachCategory) => {
           return (
-            <div key={eachCategory._id} className="category-box">
+            
+            <div className="category-box">
+              <Link to={`/category/${eachCategory._id}/furniture-list`} key={eachCategory._id}>
               <img src={eachCategory.picture} alt="category-pic" />
               <h2>{eachCategory.name}</h2>
+              </Link>
             </div>
+          
           );
         })}
       </div>
