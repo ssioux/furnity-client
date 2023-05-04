@@ -1,6 +1,8 @@
 // CSS
 import "../../css/admin.css";
 
+// TODO Css for the select.
+
 // React
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -28,7 +30,7 @@ function NewFurniture() {
   const [isLoadingPicture, setIsLoadingPicture] = useState(false);
   // errorMessages from BE
   const [errorMessage, setErrorMessage] = useState("");
-  console.log("🚀 NewFurniture ~ errorMessage:", errorMessage);
+  
 
   useEffect(() => {
     getData();
