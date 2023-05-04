@@ -3,7 +3,7 @@ import "../../css/admin.css";
 
 // React
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Cloudinary
 import { uploadPictureService } from "../../services/upload.services";
@@ -11,6 +11,7 @@ import { uploadPictureService } from "../../services/upload.services";
 import GridLoader from "react-spinners/GridLoader";
 // Axios Services
 import { createFurnitureService } from "../../services/furniture.services";
+import { listCategoryService } from "../../services/category.services";
 
 function NewFurniture() {
   const navigate = useNavigate();
@@ -18,12 +19,30 @@ function NewFurniture() {
   const [furnitureNameInput, setFurnitureNameInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [priceInput, setPriceInput] = useState("");
+  const [categoryInput, setCategoryInput] = useState("");
+  const [listCategory, setListCategory] = useState("");
+
   // Keep the picture from cloudinary
   const [pictureURL, setPictureUrl] = useState("");
   // Cloudinary loading
   const [isLoadingPicture, setIsLoadingPicture] = useState(false);
   // errorMessages from BE
   const [errorMessage, setErrorMessage] = useState("");
+  console.log("🚀 NewFurniture ~ errorMessage:", errorMessage);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      // Category List from DB
+      const res = await listCategoryService();
+      setListCategory(res.data);
+    } catch (error) {
+      navigate("/error");
+    }
+  };
 
   // funtion that send the user picture to cloudinary and receive it
   const handlePictureChange = async (e) => {
@@ -50,12 +69,12 @@ function NewFurniture() {
   const handleNewFurniture = async (e) => {
     e.preventDefault();
 
-    // TODO Create a new input: what category belongs.
-    const newFurniture = {
+      const newFurniture = {
       name: furnitureNameInput,
       description: descriptionInput,
       picture: pictureURL,
       price: priceInput,
+      category: categoryInput,
     };
 
     try {
@@ -70,7 +89,6 @@ function NewFurniture() {
         navigate("/error");
       }
     }
-    
   };
 
   return (
@@ -108,19 +126,29 @@ function NewFurniture() {
                 Description
               </label>
             </div>
-            
+
             <div className="input-container">
               <input
                 value={priceInput}
                 onChange={(e) => setPriceInput(e.target.value)}
               />
-              <label
-                className={priceInput && "filled"}
-                htmlFor="price"
-              >
+              <label className={priceInput && "filled"} htmlFor="price">
                 Price
               </label>
             </div>
+
+            <div className="input-container">
+              <label htmlFor="category">Choose Category</label>
+
+              <select onChange={(e) => setCategoryInput(e.target.value)}>
+                {listCategory.map((opt) => (
+                  <option key={opt._id} value={opt._id}>
+                    {opt.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="input-container">
               <input
                 type="file"
