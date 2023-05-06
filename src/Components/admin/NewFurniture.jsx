@@ -140,10 +140,10 @@ function NewFurniture() {
               </label>
             </div>
 
-            <div className="input-container">
+            <div className="select-option">
               <label htmlFor="category">Choose Category</label>
 
-              <select onChange={(e) => setCategoryInput(e.target.value)}>
+              <select onChange={(e) => setCategoryInput(e.target.value)} className="selection">
                 {listCategory?.map((opt) => {
                   return (
                   <option key={opt._id} value={opt._id}>

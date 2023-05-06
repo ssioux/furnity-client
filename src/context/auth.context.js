@@ -2,6 +2,8 @@
 import { createContext, useState, useEffect } from "react";
 // Services
 import { verifyService } from "../services/auth.services";
+// Snipper Loading
+import GridLoader from "react-spinners/GridLoader";
 
 const AuthContext = createContext();
 
@@ -43,7 +45,14 @@ function AuthWrapper(props) {
   if (isFetching === true) {
     return (
       <div className="centered-container">
-        <h3>... Validating User ...</h3>
+         <GridLoader
+                color="rgb(21, 21, 170)"
+                loading
+                margin={10}
+                size={15}
+                speedMultiplier={1}
+                className="loader"
+              />
       </div>
     );
   }
