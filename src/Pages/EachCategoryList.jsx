@@ -1,7 +1,10 @@
 // React
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function EachCategoryList() {
+  const categoryId = useParams();
+
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
 
@@ -12,7 +15,8 @@ function EachCategoryList() {
   const getData = async () => {
     // TODO: Each Category furniture list.
     try {
-      // Conection to BE for take the furniture List of Each Category (AxiosService), adn maybe to create a new Route in the BE
+
+      // const response = await axiosService(categoryId)
       // setfurnituresListByCategory(response)
     } catch (error) {
       // error message from error (400)
