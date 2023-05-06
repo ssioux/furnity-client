@@ -18,7 +18,7 @@ const deleteFurnitureService = (furnitureId) => {
   return service.delete(`/api/furniture/${furnitureId}/delete`);
 };
 const eachCategoryFurnitureListService = (categoryId) => {
-  return service.delete(`/api/furniture/${categoryId}/list`);
+  return service.get(`/api/furniture/${categoryId}/list`);
 };
 
 export {
