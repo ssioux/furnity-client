@@ -9,14 +9,10 @@ function EachCategoryList() {
   const categoryId = useParams();
   const navigate = useNavigate();
 
-  console.log("first", categoryId);
+
 
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
-  console.log(
-    "🚀 ~ file: EachCategoryList.jsx:17 ~ EachCategoryList ~ furnituresListByCategory:",
-    furnituresListByCategory
-  );
 
   useEffect(() => {
     getData();
