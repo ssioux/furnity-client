@@ -17,6 +17,9 @@ const updateFurnitureService = (furnitureId, furnitureUpdate) => {
 const deleteFurnitureService = (furnitureId) => {
   return service.delete(`/api/furniture/${furnitureId}/delete`);
 };
+const eachCategoryFurnitureListService = (categoryId) => {
+  return service.delete(`/api/furniture/${categoryId}/list`);
+};
 
 export {
   listFurnitureService,
@@ -24,4 +27,5 @@ export {
   detailsFurnitureService,
   updateFurnitureService,
   deleteFurnitureService,
+  eachCategoryFurnitureListService,
  };
