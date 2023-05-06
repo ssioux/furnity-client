@@ -35,7 +35,13 @@ function EachCategoryList() {
   return (
     <>
       {furnituresListByCategory.map((eachFurny) => {
-        return <img src={eachFurny.picture} alt="" style={{ width: 300 }} />;
+        return (
+          <>
+            <h3>{eachFurny.name}</h3>
+            <p>{eachFurny.description}</p>
+            <img src={eachFurny.picture} alt="" style={{ width: 300 }} />
+          </>
+        );
       })}
     </>
   );
