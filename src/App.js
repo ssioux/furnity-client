@@ -19,6 +19,7 @@ import NotFound from "./Pages/NotFound";
 import Error from "./Pages/Error";
 import Admin from "./Pages/Admin";
 import EachCategoryList from "./Pages/EachCategoryList";
+import FurnitureDetails from "./Pages/FurnitureDetails";
 
 function App() {
   return (
@@ -28,9 +29,11 @@ function App() {
       </div>
       <Navbar />
       <Routes>
+          {/* All Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/category/:categoryId/furniture-list" element={<EachCategoryList/>} />
+        <Route path="/furniture/:furnitureId/details" element={<FurnitureDetails/>} />
         {/* Auth Routes */}
         <Route
           path="/profile"
