@@ -7,24 +7,21 @@ import { detailsFurnitureService } from "../services/furniture.services";
 function FurnitureDetails() {
   // Id From Params
   const { furnitureId } = useParams();
-
+  // Hook Helps to Navigate in router DOM
   const navigate = useNavigate();
 
   // Each Furniture Details from API
   const [furnitureDetails, setFurnitureDetails] = useState([]);
-  console.log(
-    "🚀 -1 fd-FurnitureDetails ~ furnitureDetails:",
-    furnitureDetails
-  );
-
+  
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
     try {
+      // Get Data in the BE for take the Furniture Details
       const response = await detailsFurnitureService(furnitureId);
-      console.log("-2fd-", response.data);
+      // Get the Data in the State
       setFurnitureDetails(response.data);
     } catch (error) {
       navigate("/error");
