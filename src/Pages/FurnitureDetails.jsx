@@ -12,6 +12,10 @@ function FurnitureDetails() {
 
   // Each Furniture Details from API
   const [furnitureDetails, setFurnitureDetails] = useState([]);
+  console.log(
+    "🚀 -1 fd-FurnitureDetails ~ furnitureDetails:",
+    furnitureDetails
+  );
 
   useEffect(() => {
     getData();
@@ -20,7 +24,7 @@ function FurnitureDetails() {
   const getData = async () => {
     try {
       const response = await detailsFurnitureService(furnitureId);
-      console.log("first", response.data);
+      console.log("-2fd-", response.data);
       setFurnitureDetails(response.data);
     } catch (error) {
       navigate("/error");
@@ -28,17 +32,14 @@ function FurnitureDetails() {
   };
 
   return (
-    <>
-      {furnitureDetails.map((Furny) => {
-        return (
-          <div key={Furny._id}>
-            <h3>{Furny.name}</h3>
-            <p>{Furny.description}</p>
-            <img src={Furny.picture} alt="" style={{ width: 300 }} />
-          </div>
-        );
-      })}
-    </>
+    <section>
+
+      <h1>{furnitureDetails.name}</h1>
+      <img src={furnitureDetails.picture} alt="" style={{ width: 300 }} />
+      <p>{furnitureDetails.description}</p>
+      <h2>{furnitureDetails.price} €</h2>
+
+    </section>
   );
 }
 

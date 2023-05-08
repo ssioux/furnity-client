@@ -6,7 +6,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { eachCategoryFurnitureListService } from "../services/furniture.services";
 
 function EachCategoryList() {
-  const {categoryId} = useParams();
+  const { categoryId } = useParams();
   const navigate = useNavigate();
 
   // Furniture List from Each Category
@@ -30,13 +30,11 @@ function EachCategoryList() {
     <>
       {furnituresListByCategory.map((eachFurny) => {
         return (
-          
           <Link to={`/furniture/${eachFurny._id}/details`} key={eachFurny._id}>
             <h3>{eachFurny.name}</h3>
             <p>{eachFurny.description}</p>
             <img src={eachFurny.picture} alt="" style={{ width: 300 }} />
-            </Link>
-        
+          </Link>
         );
       })}
     </>
