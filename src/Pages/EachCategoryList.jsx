@@ -5,6 +5,10 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 // Axios Service
 import { eachCategoryFurnitureListService } from "../services/furniture.services";
 
+// AntDesign
+import { Card } from "antd";
+const { Meta } = Card;
+
 function EachCategoryList() {
   const { categoryId } = useParams();
   const navigate = useNavigate();
@@ -27,17 +31,27 @@ function EachCategoryList() {
     }
   };
   return (
-    <>
+    <section className="general-container wrap" style={{marginTop: "30px"}}>
       {furnituresListByCategory.map((eachFurny) => {
         return (
-          <Link to={`/furniture/${eachFurny._id}/details`} key={eachFurny._id}>
-            <h3>{eachFurny.name}</h3>
-            <p>{eachFurny.description}</p>
-            <img src={eachFurny.picture} alt="" style={{ width: 300 }} />
+          <Link to={`/furniture/${eachFurny._id}/details`} key={eachFurny._id} >
+            <Card
+              hoverable
+              style={{
+                width: 240,
+                margin: "20px",
+              }}
+              cover={<img alt="example" src={eachFurny.picture} />}
+            >
+              <Meta
+                title={eachFurny.name}
+                description={eachFurny.description}
+              />
+            </Card>
           </Link>
         );
       })}
-    </>
+    </section>
   );
 }
 
