@@ -4,6 +4,9 @@ import { useParams, useNavigate } from "react-router-dom";
 // Axios Services
 import { detailsFurnitureService } from "../services/furniture.services";
 
+import { Card } from "antd";
+const { Meta } = Card;
+
 function FurnitureDetails() {
   // Id From Params
   const { furnitureId } = useParams();
@@ -12,7 +15,7 @@ function FurnitureDetails() {
 
   // Each Furniture Details from API
   const [furnitureDetails, setFurnitureDetails] = useState([]);
-  
+
   useEffect(() => {
     getData();
   }, []);
@@ -30,12 +33,18 @@ function FurnitureDetails() {
 
   return (
     <section>
-
-      <h1>{furnitureDetails.name}</h1>
-      <img src={furnitureDetails.picture} alt="" style={{ width: 300 }} />
-      <p>{furnitureDetails.description}</p>
-      <h2>{furnitureDetails.price} €</h2>
-
+      <Card
+        hoverable
+        style={{
+          width: 240,
+        }}
+        cover={<img alt="example" src={furnitureDetails.picture} />}
+      >
+        <Meta
+          title={furnitureDetails.name}
+          description={furnitureDetails.description}
+        />
+      </Card>
     </section>
   );
 }
