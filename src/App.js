@@ -20,6 +20,7 @@ import Error from "./Pages/Error";
 import Admin from "./Pages/Admin";
 import EachCategoryList from "./Pages/EachCategoryList";
 import FurnitureDetails from "./Pages/FurnitureDetails";
+import AddressForm from "./Components/profile/AddressForm";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
           {/* All Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/test" element={<AddressForm />} />
+
         <Route path="/category/:categoryId/furniture-list" element={<EachCategoryList/>} />
         <Route path="/furniture/:furnitureId/details" element={<FurnitureDetails/>} />
         {/* Auth Routes */}

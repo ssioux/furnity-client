@@ -4,8 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 // Axios Services
 import { detailsFurnitureService } from "../services/furniture.services";
 
-import { Card } from "antd";
-const { Meta } = Card;
+
 
 function FurnitureDetails() {
   // Id From Params
@@ -33,7 +32,7 @@ function FurnitureDetails() {
 
   return (
     <section>
-      <Card
+      {/* <Card
         hoverable
         style={{
           width: 240,
@@ -44,7 +43,8 @@ function FurnitureDetails() {
           title={furnitureDetails.name}
           description={furnitureDetails.description}
         />
-      </Card>
+      </Card> */}
+      <img alt="example" src={furnitureDetails.picture} />
     </section>
   );
 }

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 // CSS
 import "./index.css";
+import 'bootstrap/dist/css/bootstrap.css';
 // App
 import App from "./App";
 

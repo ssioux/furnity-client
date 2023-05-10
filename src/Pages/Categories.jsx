@@ -10,6 +10,7 @@ import { listCategoryService } from "../services/category.services";
 function Categories() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
+  console.log("🚀 ~ file: Categories.jsx:13 ~ Categories ~ categories:", categories)
 
   useEffect(() => {
     getData();

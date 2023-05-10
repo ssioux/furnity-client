@@ -1,13 +1,13 @@
 // React Hooks
 import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 
 // Axios Service
 import { eachCategoryFurnitureListService } from "../services/furniture.services";
 
-// AntDesign
-import { Card } from "antd";
-const { Meta } = Card;
+// Bootstrap
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function EachCategoryList() {
   const { categoryId } = useParams();
@@ -15,6 +15,7 @@ function EachCategoryList() {
 
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
+  console.log("🚀 ~ file: EachCategoryList.jsx:18 ~ EachCategoryList ~ furnituresListByCategory:", furnituresListByCategory)
 
   useEffect(() => {
     getData();
@@ -31,24 +32,19 @@ function EachCategoryList() {
     }
   };
   return (
-    <section className="general-container wrap" style={{marginTop: "30px"}}>
+    <section className="general-container wrap" style={{ marginTop: "30px" }}>
       {furnituresListByCategory.map((eachFurny) => {
         return (
-          <Link to={`/furniture/${eachFurny._id}/details`} key={eachFurny._id} >
-            <Card
-              hoverable
-              style={{
-                width: 240,
-                margin: "20px",
-              }}
-              cover={<img alt="example" src={eachFurny.picture} />}
-            >
-              <Meta
-                title={eachFurny.name}
-                description={eachFurny.description}
-              />
+          <div style={{ margin: "30px" }}>
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={eachFurny.picture} />
+              <Card.Body>
+                <Card.Title>{eachFurny.name}</Card.Title>
+                <Card.Text>{eachFurny.description}</Card.Text>
+                <Button variant="primary">Buy Icon</Button>
+              </Card.Body>
             </Card>
-          </Link>
+          </div>
         );
       })}
     </section>
