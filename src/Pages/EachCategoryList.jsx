@@ -1,6 +1,6 @@
 // React Hooks
 import { useState, useEffect } from "react";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 // Axios Service
 import { eachCategoryFurnitureListService } from "../services/furniture.services";
@@ -8,6 +8,9 @@ import { eachCategoryFurnitureListService } from "../services/furniture.services
 // Bootstrap
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import * as Icon from "react-bootstrap-icons";
+
+console.log("first", Icon);
 
 function EachCategoryList() {
   const { categoryId } = useParams();
@@ -15,7 +18,10 @@ function EachCategoryList() {
 
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
-  console.log("🚀 ~ file: EachCategoryList.jsx:18 ~ EachCategoryList ~ furnituresListByCategory:", furnituresListByCategory)
+  console.log(
+    "🚀 ~ file: EachCategoryList.jsx:18 ~ EachCategoryList ~ furnituresListByCategory:",
+    furnituresListByCategory
+  );
 
   useEffect(() => {
     getData();
@@ -41,7 +47,9 @@ function EachCategoryList() {
               <Card.Body>
                 <Card.Title>{eachFurny.name}</Card.Title>
                 <Card.Text>{eachFurny.description}</Card.Text>
-                <Button variant="primary">Buy Icon</Button>
+                <Button variant="primary">
+                  <Icon.CartPlus size={30} />
+                </Button>
               </Card.Body>
             </Card>
           </div>
