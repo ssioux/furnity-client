@@ -53,7 +53,7 @@ function EachCategoryList() {
     try {
       
     } catch (error) {
-      
+      navigate("/error")
     }
   }
 
