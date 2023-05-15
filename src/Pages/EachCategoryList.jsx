@@ -20,6 +20,7 @@ import Card from "react-bootstrap/Card";
     /> */
 
 import * as Icon from "react-bootstrap-icons";
+import { addToCartUserService } from "../services/user.services";
 
 function EachCategoryList() {
   // Category Id from params
@@ -27,7 +28,8 @@ function EachCategoryList() {
   // Hook to Navigate
   const navigate = useNavigate();
   // User data
-  const { authenticateUser } = useContext(AuthContext);
+  const { authenticateUser, user } = useContext(AuthContext);
+  const userId = user._id
   
 
   // Furniture List from Each Category
@@ -48,10 +50,14 @@ function EachCategoryList() {
       navigate("/error");
     }
   };
-  const addFurnyToCart = async (Furniture) => {
-
+  const addFurnyToCart = async (furnyId) => {
+    
+    console.log("🚀 ~ file: EachCategoryList.jsx:55 ~ addFurnyToCart ~ userId:", userId)
+    
+    
     try {
-      
+      await addToCartUserService(userId, {furnyId: furnyId})
+      console.log("pepeep, todo correcto")
     } catch (error) {
       navigate("/error")
     }
@@ -67,7 +73,7 @@ function EachCategoryList() {
               <Card.Body>
                 <Card.Title>{eachFurny.name}</Card.Title>
                 <Card.Text>{eachFurny.description}</Card.Text>
-                <Button variant="primary" onClick={addFurnyToCart(eachFurny)}>
+                <Button variant="primary" onClick={() => addFurnyToCart(eachFurny._id)}>
                   <Icon.CartPlus size={30} />
                 </Button>
               </Card.Body>
