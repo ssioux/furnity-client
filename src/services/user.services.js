@@ -5,6 +5,11 @@ import service from "./config.services";
 const listUserService = () => {
   return service.get("/api/user/list");
 };
+
+const userCartListService = () => {
+  return service.get("/api/user/user-cart");
+};
+
 const detailsUserService = (userId) => {
   return service.get(`/api/user/${userId}/details`);
 };
@@ -27,5 +32,5 @@ export {
   updateUserService,
   deleteUserService,
   addToCartUserService,
-
+  userCartListService,
 };
