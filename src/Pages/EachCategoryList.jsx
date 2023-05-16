@@ -20,7 +20,7 @@ import Card from "react-bootstrap/Card";
     /> */
 
 import * as Icon from "react-bootstrap-icons";
-import { addToCartUserService } from "../services/user.services";
+import { addToCartUserService, userCartListService } from "../services/user.services";
 
 function EachCategoryList() {
   // Category Id from params
@@ -35,18 +35,20 @@ function EachCategoryList() {
 
 
   
-  // Function that filter the items from the user cart with the category list, to see what items has the user
-  const hasFurny = (eachFurnyId) => {
-    const searchingFurnyInCart = user?.cart.filter((eachItem) => eachItem.toString() === eachFurnyId.toString())[0];
-    
-    return searchingFurnyInCart
-  };
+  
 
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
-  console.log("🚀 furnituresListByCategory:", furnituresListByCategory)
-  
+  const [currentCart, setCurrentCart] = useState([])
+  console.log("🚀 ~ file: EachCategoryList.jsx:43 ~ EachCategoryList ~ currentCart:", currentCart)
 
+  
+  // Function that filter the items from the user cart with the category list, to see what items has the user
+  const hasFurny = (eachFurnyId) => {
+    const searchingFurnyInCart = currentCart.filter((eachItem) => eachItem.toString() === eachFurnyId.toString())[0];
+    
+    return searchingFurnyInCart
+  };
   // const userHasFurny = user.cart.filter((eachItem) => eachItem._id.toString() === furnituresListByCategory._id.toString())
 
   useEffect(() => {
@@ -57,8 +59,10 @@ function EachCategoryList() {
     try {
       // Getting Furniture List By Category
       const response = await eachCategoryFurnitureListService(categoryId);
+      const userCart = await userCartListService()
 
       setfurnituresListByCategory(response.data);
+      setCurrentCart(userCart.data)
     } catch (error) {
       navigate("/error");
     }
@@ -69,6 +73,8 @@ function EachCategoryList() {
     try {
       // service adding item to the current user cart
       await addToCartUserService(userId, { furnyId: furnyId });
+      // Load the page
+      getData()
     } catch (error) {
       navigate("/error");
     }
