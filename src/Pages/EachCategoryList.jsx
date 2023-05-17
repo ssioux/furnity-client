@@ -20,7 +20,7 @@ import Card from "react-bootstrap/Card";
     /> */
 
 import * as Icon from "react-bootstrap-icons";
-import { addToCartUserService, userCartListService } from "../services/user.services";
+import { addToCartUserService, removeToCartUserService, userCartListService } from "../services/user.services";
 
 function EachCategoryList() {
   // Category Id from params
@@ -68,7 +68,7 @@ function EachCategoryList() {
     }
   };
 
-  // TODO: button working if is registered, search cart data from axios, Id in the useEffect, BE remove addToSet  and add normal push.
+  // TODO: button working if is registered, search cart data from axios, BE remove addToSet  and add normal push.
   const addFurnyToCart = async (furnyId) => {
     try {
       // service adding item to the current user cart
@@ -79,6 +79,18 @@ function EachCategoryList() {
       navigate("/error");
     }
   };
+
+  const removeFurnyToCart = async (furnyId) => {
+
+   try {
+      // service removing item to the current user cart
+      await removeToCartUserService(userId, { furnyId: furnyId });
+      // Load the page
+      getData()
+    } catch (error) {
+      navigate("/error");
+    }
+  }
 
   return (
     <section className="general-container wrap" style={{ marginTop: "30px" }}>
@@ -108,7 +120,7 @@ function EachCategoryList() {
                       { hasFurny(eachFurny._id) === eachFurny._id ? (
                   <Button
                     variant="danger"
-                    onClick={() => addFurnyToCart(eachFurny._id)}
+                    onClick={() => removeFurnyToCart(eachFurny._id)}
                   >
                     <Icon.CartX size={30} />
                   </Button>

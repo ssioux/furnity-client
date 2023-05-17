@@ -21,6 +21,10 @@ const addToCartUserService = (userId, furnyId) => {
   return service.patch(`/api/user/${userId}/addtocart`, furnyId);
 };
 
+const removeToCartUserService = (userId, furnyId) => {
+  return service.patch(`/api/user/${userId}/removetocart`, furnyId);
+};
+
 const deleteUserService = (userId) => {
   return service.delete(`/api/category/${userId}/delete`);
 };
@@ -33,4 +37,5 @@ export {
   deleteUserService,
   addToCartUserService,
   userCartListService,
+  removeToCartUserService,
 };
