@@ -22,7 +22,7 @@ const addToCartUserService = (userId, furnyId) => {
 };
 
 const removeToCartUserService = (userId, furnyId) => {
-  return service.delete(`/api/user/${userId}/removetocart`, furnyId);
+  return service.patch(`/api/user/${userId}/removetocart`, furnyId);
 };
 
 const deleteUserService = (userId) => {
