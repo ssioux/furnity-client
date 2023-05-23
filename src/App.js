@@ -21,6 +21,7 @@ import Admin from "./Pages/Admin";
 import EachCategoryList from "./Pages/EachCategoryList";
 import FurnitureDetails from "./Pages/FurnitureDetails";
 import AddressForm from "./Components/profile/AddressForm";
+import Cart from "./Pages/Cart"
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/test" element={<AddressForm />} />
+        <Route path="/cart" element={<Cart />} />
+
 
         <Route path="/category/:categoryId/furniture-list" element={<EachCategoryList/>} />
         <Route path="/furniture/:furnitureId/details" element={<FurnitureDetails/>} />
