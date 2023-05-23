@@ -59,6 +59,9 @@ const RightNav = ({ open, setOpen }) => {
           <Link to="/" onClick={handleLogout}>
             <li>LOGOUT</li>
           </Link>
+          <Link to="/cart" >
+            <li>CART</li>
+          </Link>
           {user.role === "admin" && <Link to="/admin" onClick={() => setOpen(!open)}>
             <li>ADMIN</li>
           </Link>}
