@@ -6,8 +6,8 @@ const listUserService = () => {
   return service.get("/api/user/list");
 };
 
-const userCartListService = () => {
-  return service.get("/api/user/user-cart");
+const userCartListService = (userId) => {
+  return service.get(`/api/user/${userId}/user-cart`);
 };
 
 const detailsUserService = (userId) => {
@@ -21,7 +21,7 @@ const addToCartUserService = (userId, furnyId) => {
   return service.patch(`/api/user/${userId}/addtocart`, furnyId);
 };
 
-const removeToCartUserService = (userId, furnyId) => {
+const removeFromCartUserService = (userId, furnyId) => {
   return service.patch(`/api/user/${userId}/removetocart`, furnyId);
 };
 
@@ -37,5 +37,5 @@ export {
   deleteUserService,
   addToCartUserService,
   userCartListService,
-  removeToCartUserService,
+  removeFromCartUserService,
 };

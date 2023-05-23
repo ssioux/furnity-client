@@ -5,6 +5,11 @@ import { AuthContext } from "../context/auth.context";
 
 // Axios Service
 import { eachCategoryFurnitureListService } from "../services/furniture.services";
+import {
+  addToCartUserService,
+  removeFromCartUserService,
+  userCartListService,
+} from "../services/user.services";
 
 // Bootstrap
 import Button from "react-bootstrap/Button";
@@ -20,7 +25,6 @@ import Card from "react-bootstrap/Card";
     /> */
 
 import * as Icon from "react-bootstrap-icons";
-import { addToCartUserService, removeToCartUserService, userCartListService } from "../services/user.services";
 
 function EachCategoryList() {
   // Category Id from params
@@ -31,23 +35,27 @@ function EachCategoryList() {
   const { isLoggedIn, user } = useContext(AuthContext);
 
   const userId = user?._id;
-  
 
-
-  
-  
+  console.log(
+    "🚀 ~ file: EachCategoryList.jsx:35 ~ EachCategoryList ~ userId:",
+    userId
+  );
 
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
-  const [currentCart, setCurrentCart] = useState([])
-  console.log("🚀 ~ file: EachCategoryList.jsx:43 ~ EachCategoryList ~ currentCart:", currentCart)
+  const [currentCart, setCurrentCart] = useState([]);
+  console.log(
+    "🚀 ~ file: EachCategoryList.jsx:43 ~ EachCategoryList ~ currentCart:",
+    currentCart
+  );
 
-  
   // Function that filter the items from the user cart with the category list, to see what items has the user
   const hasFurny = (eachFurnyId) => {
-    const searchingFurnyInCart = currentCart.filter((eachItem) => eachItem.toString() === eachFurnyId.toString())[0];
-    
-    return searchingFurnyInCart
+    const searchingFurnyInCart = currentCart.filter(
+      (eachItem) => eachItem.toString() === eachFurnyId.toString()
+    )[0];
+
+    return searchingFurnyInCart;
   };
   // const userHasFurny = user.cart.filter((eachItem) => eachItem._id.toString() === furnituresListByCategory._id.toString())
 
@@ -59,38 +67,39 @@ function EachCategoryList() {
     try {
       // Getting Furniture List By Category
       const response = await eachCategoryFurnitureListService(categoryId);
-      const userCart = await userCartListService()
+      const userCart = await userCartListService(userId);
+      console.log("🚀 getData ~ userCart:", userCart);
 
       setfurnituresListByCategory(response.data);
-      setCurrentCart(userCart.data)
+      setCurrentCart(userCart.data);
     } catch (error) {
       navigate("/error");
     }
   };
 
-  // TODO: button working if is registered, search cart data from axios, BE remove addToSet  and add normal push.
-  const addFurnyToCart = async (furnyId) => {
+  // TODO: button working if is registered, BE remove addToSet and add normal push.
+  const addFurnyToCart = async (furnyId, furnyName) => {
     try {
+      alert(`${furnyName}, added to cart`);
       // service adding item to the current user cart
       await addToCartUserService(userId, { furnyId: furnyId });
       // Load the page
-      getData()
+      getData();
     } catch (error) {
       navigate("/error");
     }
   };
 
   const removeFurnyToCart = async (furnyId) => {
-
-   try {
+    try {
       // service removing item to the current user cart
-      await removeToCartUserService(userId, { furnyId: furnyId });
+      await removeFromCartUserService(userId, { furnyId: furnyId });
       // Load the page
-      getData()
+      getData();
     } catch (error) {
       navigate("/error");
     }
-  }
+  };
 
   return (
     <section className="general-container wrap" style={{ marginTop: "30px" }}>
@@ -115,9 +124,8 @@ function EachCategoryList() {
                     <Icon.CartPlus size={30} />
                   </Button>
                 )} */}
-               
 
-                      { hasFurny(eachFurny._id) === eachFurny._id ? (
+                {hasFurny(eachFurny._id) === eachFurny._id ? (
                   <Button
                     variant="danger"
                     onClick={() => removeFurnyToCart(eachFurny._id)}
@@ -125,7 +133,12 @@ function EachCategoryList() {
                     <Icon.CartX size={30} />
                   </Button>
                 ) : (
-                  <Button variant="primary" onClick={() => addFurnyToCart(eachFurny._id)}>
+                  <Button
+                    variant="primary"
+                    onClick={() =>
+                      addFurnyToCart(eachFurny._id, eachFurny.name)
+                    }
+                  >
                     <Icon.CartPlus size={30} />
                   </Button>
                 )}
