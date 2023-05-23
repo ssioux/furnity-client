@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import "../../css/navbar.css";
 // React
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Context
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
+// Axios Services
+import { userCartListService } from "../../services/user.services";
 
 const Ul = styled.ul`
   list-style: none;
@@ -34,7 +36,31 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open, setOpen }) => {
+
+  const navigate = useNavigate();
   const { authenticateUser, isLoggedIn, user } = useContext(AuthContext);
+  const userId = user?._id;
+
+  const [numberItemsCart, setNumberItemsCart] = useState([])
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      // Getting Furniture List By Category
+  
+      const userCart = await userCartListService(userId);
+      setNumberItemsCart(userCart.data.length)
+      console.log("🚀 getData ~ userCart:", userCart);
+
+    
+     
+    } catch (error) {
+      navigate("/error");
+    }
+  };
 
   const handleLogout = () => {
     // Removes the token from local storage
@@ -59,8 +85,9 @@ const RightNav = ({ open, setOpen }) => {
           <Link to="/" onClick={handleLogout}>
             <li>LOGOUT</li>
           </Link>
-          <Link to="/cart" >
-            <li>CART</li>
+          <Link to="/cart" style={{display:"flex"}}>
+            <li>CART </li>
+            <p style={{color: "red"}}>{ `${numberItemsCart}` }</p>
           </Link>
           {user.role === "admin" && <Link to="/admin" onClick={() => setOpen(!open)}>
             <li>ADMIN</li>
