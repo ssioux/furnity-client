@@ -36,11 +36,6 @@ function EachCategoryList() {
 
   const userId = user?._id;
 
-  console.log(
-    "🚀 ~ file: EachCategoryList.jsx:35 ~ EachCategoryList ~ userId:",
-    userId
-  );
-
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
   const [currentCart, setCurrentCart] = useState([]);
@@ -71,7 +66,7 @@ function EachCategoryList() {
 
       // Read user Cart when user is Online
       if (isLoggedIn) {
-        const userCart = await userCartListService(userId);
+        const userCart = await userCartListService();
         setCurrentCart(userCart.data);
       }
     } catch (error) {
@@ -118,6 +113,7 @@ function EachCategoryList() {
               <Card.Body>
                 <Card.Title>{eachFurny.name}</Card.Title>
                 <Card.Text>{eachFurny.description}</Card.Text>
+                
                 {isLoggedIn ? (
                   hasFurny(eachFurny._id) === eachFurny._id ? (
                     <Button
@@ -141,6 +137,7 @@ function EachCategoryList() {
                     <Icon.CartPlus size={30} />
                   </Button>
                 )}
+
               </Card.Body>
             </Card>
           </div>
