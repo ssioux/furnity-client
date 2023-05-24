@@ -6,8 +6,8 @@ const listUserService = () => {
   return service.get("/api/user/list");
 };
 
-const userCartListService = (userId) => {
-  return service.get(`/api/user/${userId}/user-cart`);
+const userCartListService = () => {
+  return service.get("/api/user/user-cart");
 };
 
 const detailsUserService = (userId) => {

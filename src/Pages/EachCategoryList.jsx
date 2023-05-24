@@ -84,7 +84,7 @@ function EachCategoryList() {
     try {
       alert(`${furnyName}, added to cart`);
       // service adding item to the current user cart
-      await addToCartUserService(userId, { furnyId: furnyId });
+      await addToCartUserService({ furnyId: furnyId });
       // Load the page
       getData();
     } catch (error) {
