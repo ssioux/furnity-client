@@ -15,7 +15,8 @@ const Nav = styled.nav`
     padding: 15px 0;
   }`
 
-function Navbar() {
+function Navbar(props) {
+
 
 
   
@@ -24,7 +25,7 @@ function Navbar() {
          <div className="logo">
         <img src="../../../images/furnity-logo.png" alt="mini-logo" />
       </div>
-            <Burger />
+            <Burger numberItemsCart={props.numberItemsCart}/>
 
     </Nav>
   )

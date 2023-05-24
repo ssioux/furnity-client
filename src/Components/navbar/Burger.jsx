@@ -36,7 +36,7 @@ const StyledBurger = styled.div`
   }
 `;
 
-const Burger = () => {
+const Burger = (props) => {
   const [open, setOpen] = useState(false)
   
   return (
@@ -46,7 +46,7 @@ const Burger = () => {
         <div />
         <div />
       </StyledBurger>
-      <RightNav open={open} setOpen={setOpen}/>
+      <RightNav open={open} setOpen={setOpen} numberItemsCart={props.numberItemsCart}/>
     </>
   )
 }

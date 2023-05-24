@@ -35,29 +35,10 @@ const Ul = styled.ul`
   }
 `;
 
-const RightNav = ({ open, setOpen }) => {
-  const navigate = useNavigate();
-  const { authenticateUser, isLoggedIn, user } = useContext(AuthContext);
-  const userId = user?._id;
-
-  const [numberItemsCart, setNumberItemsCart] = useState([]);
-
-  useEffect(() => {
+const RightNav = ({ open, setOpen, numberItemsCart }) => {
  
-     getData(); 
-    
-  }, []);
-
-  const getData = async () => {
-    try {
-      // Getting Furniture List By Category
-
-      const userCart = await userCartListService(userId);
-      setNumberItemsCart(userCart.data.length);
-    } catch (error) {
-      navigate("/error");
-    }
-  };
+  const { authenticateUser, isLoggedIn, user } = useContext(AuthContext);
+  
 
   const handleLogout = () => {
     // Removes the token from local storage
