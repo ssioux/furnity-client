@@ -71,7 +71,7 @@ function App() {
 
         <Route
           path="/category/:categoryId/furniture-list"
-          element={<EachCategoryList />}
+          element={<EachCategoryList dataNumberItemsCart={getData} />}
         />
         <Route
           path="/furniture/:furnitureId/details"

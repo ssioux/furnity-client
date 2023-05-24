@@ -26,7 +26,7 @@ import Card from "react-bootstrap/Card";
 
 import * as Icon from "react-bootstrap-icons";
 
-function EachCategoryList() {
+function EachCategoryList(props) {
   // Category Id from params
   const { categoryId } = useParams();
   // Hook to Navigate
@@ -39,10 +39,6 @@ function EachCategoryList() {
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
   const [currentCart, setCurrentCart] = useState([]);
-  console.log(
-    "🚀 ~ file: EachCategoryList.jsx:43 ~ EachCategoryList ~ currentCart:",
-    currentCart
-  );
 
   // Function that filter the items from the user cart with the category list, to see what items has the user
   const hasFurny = (eachFurnyId) => {
@@ -80,6 +76,7 @@ function EachCategoryList() {
   };
 
   // TODO:  BE remove addToSet and add normal push.
+  // * Add & remove functions
   const addFurnyToCart = async (furnyId, furnyName) => {
     try {
       alert(`${furnyName}, added to cart`);
@@ -87,6 +84,7 @@ function EachCategoryList() {
       await addToCartUserService({ furnyId: furnyId });
       // Load the page
       getData();
+      props.dataNumberItemsCart();
     } catch (error) {
       navigate("/error");
     }
@@ -98,6 +96,7 @@ function EachCategoryList() {
       await removeFromCartUserService(userId, { furnyId: furnyId });
       // Load the page
       getData();
+      props.dataNumberItemsCart();
     } catch (error) {
       navigate("/error");
     }
@@ -113,7 +112,7 @@ function EachCategoryList() {
               <Card.Body>
                 <Card.Title>{eachFurny.name}</Card.Title>
                 <Card.Text>{eachFurny.description}</Card.Text>
-                
+
                 {isLoggedIn ? (
                   hasFurny(eachFurny._id) === eachFurny._id ? (
                     <Button
@@ -137,7 +136,6 @@ function EachCategoryList() {
                     <Icon.CartPlus size={30} />
                   </Button>
                 )}
-
               </Card.Body>
             </Card>
           </div>

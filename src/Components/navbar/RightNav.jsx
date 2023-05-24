@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import "../../css/navbar.css";
 // React
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 // Context
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 // Axios Services
-import { userCartListService } from "../../services/user.services";
+
 
 const Ul = styled.ul`
   list-style: none;
