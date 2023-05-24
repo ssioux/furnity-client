@@ -67,17 +67,24 @@ function EachCategoryList() {
     try {
       // Getting Furniture List By Category
       const response = await eachCategoryFurnitureListService(categoryId);
-      const userCart = await userCartListService(userId);
-      console.log("🚀 getData ~ userCart:", userCart);
-
       setfurnituresListByCategory(response.data);
-      setCurrentCart(userCart.data);
+
+      // Read user Cart when user is Online
+      if (isLoggedIn) {
+        const userCart = await userCartListService(userId);
+        setCurrentCart(userCart.data);
+      }
     } catch (error) {
       navigate("/error");
     }
   };
 
-  // TODO: button working if is registered, BE remove addToSet and add normal push.
+  const nonLogged = () => {
+    navigate("/login");
+    alert("You must be logged");
+  };
+
+  // TODO:  BE remove addToSet and add normal push.
   const addFurnyToCart = async (furnyId, furnyName) => {
     try {
       alert(`${furnyName}, added to cart`);
@@ -111,34 +118,26 @@ function EachCategoryList() {
               <Card.Body>
                 <Card.Title>{eachFurny.name}</Card.Title>
                 <Card.Text>{eachFurny.description}</Card.Text>
-                {/* Button filtered by logged */}
-                {/* {isLoggedIn ? (
-                  <Button
-                    variant="primary"
-                    onClick={() => addFurnyToCart(eachFurny._id)}
-                  >
-                    <Icon.CartPlus size={30} />
-                  </Button>
+                {isLoggedIn ? (
+                  hasFurny(eachFurny._id) === eachFurny._id ? (
+                    <Button
+                      variant="danger"
+                      onClick={() => removeFurnyToCart(eachFurny._id)}
+                    >
+                      <Icon.CartX size={30} />
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="primary"
+                      onClick={() =>
+                        addFurnyToCart(eachFurny._id, eachFurny.name)
+                      }
+                    >
+                      <Icon.CartPlus size={30} />
+                    </Button>
+                  )
                 ) : (
-                  <Button variant="primary" onClick={() => navigate("/signup")}>
-                    <Icon.CartPlus size={30} />
-                  </Button>
-                )} */}
-
-                {hasFurny(eachFurny._id) === eachFurny._id ? (
-                  <Button
-                    variant="danger"
-                    onClick={() => removeFurnyToCart(eachFurny._id)}
-                  >
-                    <Icon.CartX size={30} />
-                  </Button>
-                ) : (
-                  <Button
-                    variant="primary"
-                    onClick={() =>
-                      addFurnyToCart(eachFurny._id, eachFurny.name)
-                    }
-                  >
+                  <Button variant="secondary" onClick={nonLogged}>
                     <Icon.CartPlus size={30} />
                   </Button>
                 )}

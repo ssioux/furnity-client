@@ -36,27 +36,24 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open, setOpen }) => {
-
   const navigate = useNavigate();
   const { authenticateUser, isLoggedIn, user } = useContext(AuthContext);
   const userId = user?._id;
 
-  const [numberItemsCart, setNumberItemsCart] = useState([])
+  const [numberItemsCart, setNumberItemsCart] = useState([]);
 
   useEffect(() => {
-    getData();
+ 
+     getData(); 
+    
   }, []);
 
   const getData = async () => {
     try {
       // Getting Furniture List By Category
-  
-      const userCart = await userCartListService(userId);
-      setNumberItemsCart(userCart.data.length)
-      console.log("🚀 getData ~ userCart:", userCart);
 
-    
-     
+      const userCart = await userCartListService(userId);
+      setNumberItemsCart(userCart.data.length);
     } catch (error) {
       navigate("/error");
     }
@@ -85,14 +82,15 @@ const RightNav = ({ open, setOpen }) => {
           <Link to="/" onClick={handleLogout}>
             <li>LOGOUT</li>
           </Link>
-          <Link to="/cart" style={{display:"flex"}}>
+          <Link to="/cart" style={{ display: "flex" }}>
             <li>CART </li>
-            <p style={{color: "red"}}>{ `${numberItemsCart}` }</p>
+            <p style={{ color: "red" }}>{`${numberItemsCart}`}</p>
           </Link>
-          {user.role === "admin" && <Link to="/admin" onClick={() => setOpen(!open)}>
-            <li>ADMIN</li>
-          </Link>}
-          
+          {user.role === "admin" && (
+            <Link to="/admin" onClick={() => setOpen(!open)}>
+              <li>ADMIN</li>
+            </Link>
+          )}
         </>
       ) : (
         <>

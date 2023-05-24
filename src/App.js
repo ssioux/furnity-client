@@ -1,7 +1,10 @@
 import "./App.css";
+
 // React
 import { Route, Routes } from "react-router-dom";
+
 // Components
+import AddressForm from "./Components/profile/AddressForm";
 import Navbar from "./Components/navbar/Navbar";
 import IsPrivate from "./Components/IsPrivate";
 import IsAdmin from "./Components/IsAdmin";
@@ -9,6 +12,7 @@ import Clients from "./Components/admin/Clients";
 import NewFurniture from "./Components/admin/NewFurniture";
 import Orders from "./Components/admin/Orders";
 import NewCategory from "./Components/admin/NewCategory";
+
 // Pages
 import Home from "./Pages/Home";
 import Categories from "./Pages/Categories";
@@ -20,10 +24,12 @@ import Error from "./Pages/Error";
 import Admin from "./Pages/Admin";
 import EachCategoryList from "./Pages/EachCategoryList";
 import FurnitureDetails from "./Pages/FurnitureDetails";
-import AddressForm from "./Components/profile/AddressForm";
 import Cart from "./Pages/Cart"
 
+
 function App() {
+
+
   return (
     <div className="App">
       <div id="logo-banner">
