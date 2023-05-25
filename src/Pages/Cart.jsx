@@ -21,7 +21,7 @@ function Cart() {
   const getData = async() => {
     try {
       const res = await userCartListService()
-      console.log("🚀 ~ file: Cart.jsx:23  ~ res:", res)
+      console.log("🚀 ~ file: Cart.jsx:23  ~ res:", res.data)
       setUserCart(res.data)
     } catch (error) {
       navigate("/error")
@@ -31,7 +31,18 @@ function Cart() {
   return (
     <>
     
-    
+    {userCart.map((eachItem) => {
+      return (
+        
+        <div key={eachItem._id} style={{display: "flex", justifyContent: "center", alignItems: "center"}}> 
+          <img src={eachItem.picture} alt={eachItem.name} style={{width: "100px"}}/>
+          <h5>{eachItem.name}</h5>
+
+        </div>
+       
+        
+      )
+    })}
     
     </>
   )
