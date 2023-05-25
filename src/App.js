@@ -37,7 +37,6 @@ function App() {
   const navigate = useNavigate();
   const { isLoggedIn } = useContext(AuthContext);
 
-
   const [numberItemsCart, setNumberItemsCart] = useState([]);
 
   useEffect(() => {
@@ -61,7 +60,7 @@ function App() {
       <div id="logo-banner">
         <img src="../images/furnity-logo.png" alt="furnity-logo" />
       </div>
-      <Navbar numberItemsCart={numberItemsCart}/>
+      <Navbar numberItemsCart={numberItemsCart} />
       <Routes>
         {/* All Routes */}
         <Route path="/" element={<Home />} />
