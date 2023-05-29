@@ -38,8 +38,7 @@ function Cart() {
         
        
         
-      )
-    })}
+      
     
      {/****************** [] HEADER [] **********/}
 
@@ -140,7 +139,7 @@ function Cart() {
                         <div class="col-md-6">
                           <div class="form-outline form-white">
                             <input type="text" id="typeExp" class="form-control form-control-lg"
-                              placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
+                              placeholder="MM/YYYY" size="7" minlength="7" maxlength="7" />
                             <label class="form-label" for="typeExp">Expiration</label>
                           </div>
                         </div>

@@ -42,11 +42,13 @@ function EachCategoryList(props) {
 
   // Function that filter the items from the user cart with the category list, to see what items has the user
   const hasFurny = (eachFurnyId) => {
-    const searchingFurnyInCart = currentCart.filter(
-      (eachItem) => eachItem.toString() === eachFurnyId.toString()
-    )[0];
+    if (isLoggedIn) {
+      const searchingFurnyInCart = currentCart.filter(
+        (eachItem) => eachItem._id.toString() === eachFurnyId.toString()
+      )[0];
 
-    return searchingFurnyInCart;
+      return searchingFurnyInCart?._id;
+    }
   };
   // const userHasFurny = user.cart.filter((eachItem) => eachItem._id.toString() === furnituresListByCategory._id.toString())
 
@@ -77,11 +79,16 @@ function EachCategoryList(props) {
 
   // TODO:  BE remove addToSet and add normal push.
   // * Add & remove functions
-  const addFurnyToCart = async (furnyId, furnyName) => {
+  const addFurnyToCart = async (furnyId) => {
+    const obj = {
+      furnyId: furnyId,
+    };
     try {
-      alert(`${furnyName}, added to cart`);
       // service adding item to the current user cart
-      await addToCartUserService({ furnyId: furnyId });
+      if (isLoggedIn) {
+        await addToCartUserService(obj);
+      }
+
       // Load the page
       getData();
       props.dataNumberItemsCart();

@@ -18,7 +18,7 @@ const updateUserService = (userId, userUpdate) => {
 };
 
 const addToCartUserService = (furnyId) => {
-  return service.patch(`/api/user/addtocart`, furnyId);
+  return service.patch("/api/user/addtocart", furnyId);
 };
 
 const removeFromCartUserService = (userId, furnyId) => {
