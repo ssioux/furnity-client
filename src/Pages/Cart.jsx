@@ -22,19 +22,51 @@ import {
 function Cart() {
   const navigate = useNavigate();
   const [userCart, setUserCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState("");
+  const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
     getData();
-  }, []);
+
+    
+     
+  
+  }, [totalPrice]);
 
   const getData = async () => {
     try {
+      // User cart items
       const res = await userCartListService();
-      setUserCart(res.data);
+      setUserCart(res.data) 
+      setIsFetching(false)
+      setTotalPrice(totalCartPrice())
+      
+      
+    
+
     } catch (error) {
       navigate("/error");
     }
   };
+
+  const totalCartPrice = () => {
+    let counter = 0;
+
+    userCart.forEach((eachItem) => {
+      counter += counter + eachItem.price;
+    });
+    return counter;
+  };
+
+  if (isFetching === true) {
+
+    return (
+      <p>Loading... </p>
+    )
+ 
+  }
+
+  
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
@@ -204,7 +236,7 @@ function Cart() {
 
                         <div className="d-flex justify-content-between">
                           <p className="mb-2">Subtotal</p>
-                          <p className="mb-2">$4798.00</p>
+                          <p className="mb-2">{totalPrice} €</p>
                         </div>
 
                         <div className="d-flex justify-content-between">
