@@ -1,6 +1,6 @@
 // React Hooks
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 // Axios Services
 import { userCartListService } from "../services/user.services"
@@ -21,7 +21,6 @@ function Cart() {
   const getData = async() => {
     try {
       const res = await userCartListService()
-      console.log("🚀 ~ file: Cart.jsx:23  ~ res:", res.data)
       setUserCart(res.data)
     } catch (error) {
       navigate("/error")
@@ -52,14 +51,14 @@ function Cart() {
             <div class="row">
 
               <div class="col-lg-7">
-                <h5 class="mb-3"><a href="#!" class="text-body"><i
-                      class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                <h5 class="mb-3"><Link to="/categories" class="text-body"><i
+                      class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</Link></h5>
         
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
                     <p class="mb-1">Shopping cart</p>
-                    <p class="mb-0">You have 4 items in your cart</p>
+                    <p class="mb-0">You have {userCart.length} items in your cart</p>
                   </div>
                   <div>
                     <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
