@@ -32,9 +32,9 @@ function EachCategoryList(props) {
   // Hook to Navigate
   const navigate = useNavigate();
   // User data
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
-  const userId = user?._id;
+
 
   // Furniture List from Each Category
   const [furnituresListByCategory, setfurnituresListByCategory] = useState([]);
@@ -82,7 +82,6 @@ function EachCategoryList(props) {
   const addFurnyToCart = async (furnyId) => {
     try {
       // service adding item to the current user cart
-
       await addToCartUserService({ furnyId: furnyId });
 
       // Load the page

@@ -71,6 +71,8 @@ function Cart(props) {
   const addUnit = async (furnyId) => {
     try {
       await addUnitToItemService({furnyId: furnyId})
+      getData();
+      props.dataNumberItemsCart();
     } catch (error) {
       navigate("/error");
     }
@@ -80,6 +82,8 @@ function Cart(props) {
   const removeUnit = async (furnyId) => {
     try {
       await removeUnitToItemService({furnyId: furnyId})
+      getData();
+      props.dataNumberItemsCart();
     } catch (error) {
       navigate("/error");
     }
