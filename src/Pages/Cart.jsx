@@ -66,14 +66,15 @@ function Cart(props) {
   };
 
   // Add ONE more unit to the item in the cart
-  const addUnit = async () => {
+  const addUnit = async (furnyId) => {
     try {
     } catch (error) {
       navigate("/error");
     }
   };
+
   // remove ONE more unit to the item in the cart
-  const removeUnit = async () => {
+  const removeUnit = async (furnyId) => {
     try {
     } catch (error) {
       navigate("/error");
