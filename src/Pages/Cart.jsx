@@ -19,6 +19,9 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 
+// Snipper Loading
+import GridLoader from "react-spinners/GridLoader";
+
 function Cart() {
   const navigate = useNavigate();
   const [userCart, setUserCart] = useState([]);
@@ -27,23 +30,15 @@ function Cart() {
 
   useEffect(() => {
     getData();
-
-    
-     
-  
   }, [totalPrice]);
 
   const getData = async () => {
     try {
       // User cart items
       const res = await userCartListService();
-      setUserCart(res.data) 
-      setIsFetching(false)
-      setTotalPrice(totalCartPrice())
-      
-      
-    
-
+      setUserCart(res.data);
+      setIsFetching(false);
+      setTotalPrice(totalCartPrice());
     } catch (error) {
       navigate("/error");
     }
@@ -52,22 +47,13 @@ function Cart() {
   // Returns Sum Item User cart price.
   const totalCartPrice = () => {
     let counter = 0;
-    
-    userCart.forEach(eachItem => counter += eachItem.price)
+
+    userCart.forEach((eachItem) => (counter += eachItem.price));
     return counter;
   };
 
-  if (isFetching === true) {
-
-    return (
-      <p>Loading... </p>
-    )
- 
-  }
-
-  
-
   return (
+    // HEADER
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5 h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
@@ -102,56 +88,68 @@ function Cart() {
                         </p>
                       </div>
                     </div>
-
-                    {userCart.map((eachIteam) => {
-                      return (
-                        <MDBCard className="mb-3" key={eachIteam._id}>
-                          <MDBCardBody>
-                            <div className="d-flex justify-content-between">
-                              <div className="d-flex flex-row align-items-center">
-                                <div>
-                                  <MDBCardImage
-                                    src={eachIteam.picture}
-                                    fluid
-                                    className="rounded-3"
-                                    style={{ width: "65px" }}
-                                    alt={eachIteam.name}
-                                  />
+                    {/************************  USER ITEMS *************************/}
+                    {isFetching === true ? (
+                      <GridLoader
+                        color="rgb(21, 21, 170)"
+                        loading
+                        margin={10}
+                        size={15}
+                        speedMultiplier={1}
+                        className="loader"
+                      />
+                    ) : (
+                      userCart.map((eachIteam) => {
+                        return (
+                          <MDBCard className="mb-3" key={eachIteam._id}>
+                            <MDBCardBody>
+                              <div className="d-flex justify-content-between">
+                                <div className="d-flex flex-row align-items-center">
+                                  <div>
+                                    <MDBCardImage
+                                      src={eachIteam.picture}
+                                      fluid
+                                      className="rounded-3"
+                                      style={{ width: "65px" }}
+                                      alt={eachIteam.name}
+                                    />
+                                  </div>
+                                  <div className="ms-3">
+                                    <MDBTypography tag="h5">
+                                      {eachIteam.name}
+                                    </MDBTypography>
+                                    <p className="small mb-0">
+                                      {eachIteam.description}
+                                    </p>
+                                  </div>
                                 </div>
-                                <div className="ms-3">
-                                  <MDBTypography tag="h5">
-                                    {eachIteam.name}
-                                  </MDBTypography>
-                                  <p className="small mb-0">
-                                    {eachIteam.description}
-                                  </p>
+                                <div className="d-flex flex-row align-items-center">
+                                  <div style={{ width: "50px" }}>
+                                    <MDBTypography
+                                      tag="h5"
+                                      className="fw-normal mb-0"
+                                    >
+                                      {eachIteam.units}
+                                    </MDBTypography>
+                                  </div>
+                                  <div style={{ width: "80px" }}>
+                                    <MDBTypography tag="h5" className="mb-0">
+                                      {eachIteam.price} €
+                                    </MDBTypography>
+                                  </div>
+                                  <a href="#!" style={{ color: "#cecece" }}>
+                                    <MDBIcon fas icon="trash-alt" />
+                                  </a>
                                 </div>
                               </div>
-                              <div className="d-flex flex-row align-items-center">
-                                <div style={{ width: "50px" }}>
-                                  <MDBTypography
-                                    tag="h5"
-                                    className="fw-normal mb-0"
-                                  >
-                                    {eachIteam.units}
-                                  </MDBTypography>
-                                </div>
-                                <div style={{ width: "80px" }}>
-                                  <MDBTypography tag="h5" className="mb-0">
-                                    {eachIteam.price} €
-                                  </MDBTypography>
-                                </div>
-                                <a href="#!" style={{ color: "#cecece" }}>
-                                  <MDBIcon fas icon="trash-alt" />
-                                </a>
-                              </div>
-                            </div>
-                          </MDBCardBody>
-                        </MDBCard>
-                      );
-                    })}
+                            </MDBCardBody>
+                          </MDBCard>
+                        );
+                      })
+                    )}
                   </MDBCol>
 
+                  {/* ************************* CARD DETAILS *********************** */}
                   <MDBCol lg="5">
                     <MDBCard className="bg-primary text-white rounded-3">
                       <MDBCardBody>
