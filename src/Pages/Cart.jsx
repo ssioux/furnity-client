@@ -22,7 +22,7 @@ import {
 // Snipper Loading
 import GridLoader from "react-spinners/GridLoader";
 
-function Cart() {
+function Cart(props) {
   const navigate = useNavigate();
   const [userCart, setUserCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState("");
@@ -56,6 +56,7 @@ function Cart() {
     try {
     await removeFromCartUserService({furnyId:furnyId})
     getData()
+    props.dataNumberItemsCart()
     } catch (error) {
       navigate("/error")
     }

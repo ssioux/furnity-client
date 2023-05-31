@@ -67,7 +67,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/test" element={<AddressForm />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart dataNumberItemsCart={getData}/>} />
 
         <Route
           path="/category/:categoryId/furniture-list"
