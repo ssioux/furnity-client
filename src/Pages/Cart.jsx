@@ -49,12 +49,11 @@ function Cart() {
     }
   };
 
+  // Returns Sum Item User cart price.
   const totalCartPrice = () => {
     let counter = 0;
-
-    userCart.forEach((eachItem) => {
-      counter += counter + eachItem.price;
-    });
+    
+    userCart.forEach(eachItem => counter += eachItem.price)
     return counter;
   };
 
