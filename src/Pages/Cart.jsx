@@ -4,7 +4,9 @@ import { useNavigate, Link } from "react-router-dom";
 
 // Axios Services
 import {
+  addUnitToItemService,
   removeFromCartUserService,
+  removeUnitToItemService,
   userCartListService,
 } from "../services/user.services";
 
@@ -68,6 +70,7 @@ function Cart(props) {
   // Add ONE more unit to the item in the cart
   const addUnit = async (furnyId) => {
     try {
+      await addUnitToItemService({furnyId: furnyId})
     } catch (error) {
       navigate("/error");
     }
@@ -76,6 +79,7 @@ function Cart(props) {
   // remove ONE more unit to the item in the cart
   const removeUnit = async (furnyId) => {
     try {
+      await removeUnitToItemService({furnyId: furnyId})
     } catch (error) {
       navigate("/error");
     }
@@ -159,6 +163,7 @@ function Cart(props) {
                                       fas
                                       icon="minus-circle"
                                       onClick={() => removeUnit(eachItem._id)}
+                                      style={{cursor: "pointer"}}
                                     />
 
                                     {/* UNITS */}
@@ -177,6 +182,7 @@ function Cart(props) {
                                       fas
                                       icon="plus-circle"
                                       onClick={() => addUnit(eachItem._id)}
+                                      style={{cursor: "pointer"}}
                                     />
                                   </div>
                                   <div style={{ width: "80px" }}>
@@ -191,6 +197,7 @@ function Cart(props) {
                                     onClick={() =>
                                       eraseItemFromCart(eachItem._id)
                                     }
+                                    style={{cursor: "pointer"}}
                                   />
                                 </div>
                               </div>
