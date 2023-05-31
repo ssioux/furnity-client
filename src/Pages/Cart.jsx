@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // Axios Services
-import { removeFromCartUserService, userCartListService } from "../services/user.services";
+import {
+  removeFromCartUserService,
+  userCartListService,
+} from "../services/user.services";
 
 // MDB bootstrap
 import {
@@ -51,16 +54,31 @@ function Cart(props) {
     userCart.forEach((eachItem) => (counter += eachItem.price));
     return counter;
   };
-
-  const eraseItemFromCart = async(furnyId) => {
+  // Erase Item from online user cart
+  const eraseItemFromCart = async (furnyId) => {
     try {
-    await removeFromCartUserService({furnyId:furnyId})
-    getData()
-    props.dataNumberItemsCart()
+      await removeFromCartUserService({ furnyId: furnyId });
+      getData();
+      props.dataNumberItemsCart();
     } catch (error) {
-      navigate("/error")
+      navigate("/error");
     }
-  }
+  };
+
+  // Add ONE more unit to the item in the cart
+  const addUnit = async () => {
+    try {
+    } catch (error) {
+      navigate("/error");
+    }
+  };
+  // remove ONE more unit to the item in the cart
+  const removeUnit = async () => {
+    try {
+    } catch (error) {
+      navigate("/error");
+    }
+  };
 
   return (
     // HEADER
@@ -134,6 +152,16 @@ function Cart(props) {
                                   </div>
                                 </div>
                                 <div className="d-flex flex-row align-items-center">
+                                  {/* button 1 */}
+                                  <div style={{ width: "50px" }}>
+                                    <MDBIcon
+                                      fas
+                                      icon="minus-circle"
+                                      onClick={() => removeUnit(eachItem._id)}
+                                    />
+
+                                    {/* UNITS */}
+                                  </div>
                                   <div style={{ width: "50px" }}>
                                     <MDBTypography
                                       tag="h5"
@@ -142,18 +170,27 @@ function Cart(props) {
                                       {eachItem.units}
                                     </MDBTypography>
                                   </div>
+                                  {/* button 2 */}
+                                  <div style={{ width: "50px" }}>
+                                    <MDBIcon
+                                      fas
+                                      icon="plus-circle"
+                                      onClick={() => addUnit(eachItem._id)}
+                                    />
+                                  </div>
                                   <div style={{ width: "80px" }}>
                                     <MDBTypography tag="h5" className="mb-0">
                                       {eachItem.price} €
                                     </MDBTypography>
                                   </div>
-                                  <button
-                                    type="button"
-                                    class="btn btn-light btn-rounded"
-                                    onClick={() => eraseItemFromCart(eachItem._id)}
-                                  >
-                                    <MDBIcon fas icon="trash-alt" />
-                                  </button>
+
+                                  <MDBIcon
+                                    fas
+                                    icon="trash-alt"
+                                    onClick={() =>
+                                      eraseItemFromCart(eachItem._id)
+                                    }
+                                  />
                                 </div>
                               </div>
                             </MDBCardBody>
