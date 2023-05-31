@@ -80,14 +80,10 @@ function EachCategoryList(props) {
   // TODO:  BE remove addToSet and add normal push.
   // * Add & remove functions
   const addFurnyToCart = async (furnyId) => {
-    const obj = {
-      furnyId: furnyId,
-    };
     try {
       // service adding item to the current user cart
-      if (isLoggedIn) {
-        await addToCartUserService(obj);
-      }
+
+      await addToCartUserService({ furnyId: furnyId });
 
       // Load the page
       getData();
@@ -100,7 +96,7 @@ function EachCategoryList(props) {
   const removeFurnyToCart = async (furnyId) => {
     try {
       // service removing item to the current user cart
-      await removeFromCartUserService(userId, { furnyId: furnyId });
+      await removeFromCartUserService({ furnyId: furnyId });
       // Load the page
       getData();
       props.dataNumberItemsCart();

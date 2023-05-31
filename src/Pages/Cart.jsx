@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // Axios Services
-import { userCartListService } from "../services/user.services";
+import { removeFromCartUserService, userCartListService } from "../services/user.services";
 
 // MDB bootstrap
 import {
@@ -52,6 +52,15 @@ function Cart() {
     return counter;
   };
 
+  const eraseItemFromCart = async(furnyId) => {
+    try {
+    await removeFromCartUserService({furnyId:furnyId})
+    getData()
+    } catch (error) {
+      navigate("/error")
+    }
+  }
+
   return (
     // HEADER
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
@@ -99,27 +108,27 @@ function Cart() {
                         className="loader"
                       />
                     ) : (
-                      userCart.map((eachIteam) => {
+                      userCart.map((eachItem) => {
                         return (
-                          <MDBCard className="mb-3" key={eachIteam._id}>
+                          <MDBCard className="mb-3" key={eachItem._id}>
                             <MDBCardBody>
                               <div className="d-flex justify-content-between">
                                 <div className="d-flex flex-row align-items-center">
                                   <div>
                                     <MDBCardImage
-                                      src={eachIteam.picture}
+                                      src={eachItem.picture}
                                       fluid
                                       className="rounded-3"
                                       style={{ width: "65px" }}
-                                      alt={eachIteam.name}
+                                      alt={eachItem.name}
                                     />
                                   </div>
                                   <div className="ms-3">
                                     <MDBTypography tag="h5">
-                                      {eachIteam.name}
+                                      {eachItem.name}
                                     </MDBTypography>
                                     <p className="small mb-0">
-                                      {eachIteam.description}
+                                      {eachItem.description}
                                     </p>
                                   </div>
                                 </div>
@@ -129,17 +138,21 @@ function Cart() {
                                       tag="h5"
                                       className="fw-normal mb-0"
                                     >
-                                      {eachIteam.units}
+                                      {eachItem.units}
                                     </MDBTypography>
                                   </div>
                                   <div style={{ width: "80px" }}>
                                     <MDBTypography tag="h5" className="mb-0">
-                                      {eachIteam.price} €
+                                      {eachItem.price} €
                                     </MDBTypography>
                                   </div>
-                                  <a href="#!" style={{ color: "#cecece" }}>
+                                  <button
+                                    type="button"
+                                    class="btn btn-light btn-rounded"
+                                    onClick={() => eraseItemFromCart(eachItem._id)}
+                                  >
                                     <MDBIcon fas icon="trash-alt" />
-                                  </a>
+                                  </button>
                                 </div>
                               </div>
                             </MDBCardBody>

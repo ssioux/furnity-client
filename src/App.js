@@ -61,6 +61,7 @@ function App() {
         <img src="../images/furnity-logo.png" alt="furnity-logo" />
       </div>
       <Navbar numberItemsCart={numberItemsCart} />
+      
       <Routes>
         {/* All Routes */}
         <Route path="/" element={<Home />} />
