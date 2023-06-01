@@ -30,6 +30,8 @@ import GridLoader from "react-spinners/GridLoader";
 function Cart(props) {
   const navigate = useNavigate();
   const [userCart, setUserCart] = useState([]);
+  const [userCartCopy, setUserCartCopy] = useState([]);
+  console.log("🚀 ~ file: Cart.jsx:34 ~ Cart ~ userCartCopy:", userCartCopy);
   const [totalPrice, setTotalPrice] = useState("");
   const [isFetching, setIsFetching] = useState(true);
 
@@ -42,6 +44,10 @@ function Cart(props) {
       // User cart items
       const res = await userCartListService();
       setUserCart(res.data);
+
+      let cartCopy = [...res.data];
+      setUserCartCopy(cartCopy);
+
       setIsFetching(false);
       setTotalPrice(totalCartPrice());
     } catch (error) {
@@ -66,27 +72,48 @@ function Cart(props) {
       navigate("/error");
     }
   };
-
-  // Add ONE more unit to the item in the cart
+  //TODO: Create a new model (quantity) in the BE for the units
+  // Add ONE more unit to the item in the cartCopy
   const addUnit = async (furnyId) => {
-    try {
-      await addUnitToItemService({furnyId: furnyId})
-      getData();
-      props.dataNumberItemsCart();
-    } catch (error) {
-      navigate("/error");
-    }
+    const newAddCart = [];
+    // Changing the units in the furnyId Selected
+    userCartCopy.forEach((eachItem) => {
+      console.log("eachItem", eachItem);
+      if (eachItem._id === furnyId) {
+        eachItem.units += 1;
+      }
+
+      newAddCart.push(eachItem);
+    });
+
+    setUserCartCopy(newAddCart);
   };
 
   // remove ONE more unit to the item in the cart
   const removeUnit = async (furnyId) => {
-    try {
-      await removeUnitToItemService({furnyId: furnyId})
+    const remove = async () =>{
+      await removeFromCartUserService({ furnyId: furnyId });
+    }
+    const newAddCart = [];
+    // Changing the units in the furnyId Selected
+    userCartCopy.forEach((eachItem) => {
+      console.log("eachItem", eachItem);
+      if (eachItem._id === furnyId) {
+        eachItem.units -= 1;
+        if(eachItem.units === 0){
+
+          // TODO: add alert asking if user wants to remove
+         remove()
       getData();
       props.dataNumberItemsCart();
-    } catch (error) {
-      navigate("/error");
-    }
+        }
+      }
+
+      newAddCart.push(eachItem);
+     
+    });
+
+    setUserCartCopy(newAddCart);
   };
 
   return (
@@ -136,7 +163,7 @@ function Cart(props) {
                         className="loader"
                       />
                     ) : (
-                      userCart.map((eachItem) => {
+                      userCartCopy.map((eachItem) => {
                         return (
                           <MDBCard className="mb-3" key={eachItem._id}>
                             <MDBCardBody>
@@ -167,7 +194,7 @@ function Cart(props) {
                                       fas
                                       icon="minus-circle"
                                       onClick={() => removeUnit(eachItem._id)}
-                                      style={{cursor: "pointer"}}
+                                      style={{ cursor: "pointer" }}
                                     />
 
                                     {/* UNITS */}
@@ -186,7 +213,7 @@ function Cart(props) {
                                       fas
                                       icon="plus-circle"
                                       onClick={() => addUnit(eachItem._id)}
-                                      style={{cursor: "pointer"}}
+                                      style={{ cursor: "pointer" }}
                                     />
                                   </div>
                                   <div style={{ width: "80px" }}>
@@ -201,7 +228,7 @@ function Cart(props) {
                                     onClick={() =>
                                       eraseItemFromCart(eachItem._id)
                                     }
-                                    style={{cursor: "pointer"}}
+                                    style={{ cursor: "pointer" }}
                                   />
                                 </div>
                               </div>
