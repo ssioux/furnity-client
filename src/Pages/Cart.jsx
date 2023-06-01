@@ -32,12 +32,18 @@ function Cart(props) {
   const [userCart, setUserCart] = useState([]);
   const [userCartCopy, setUserCartCopy] = useState([]);
   console.log("🚀 ~ file: Cart.jsx:34 ~ Cart ~ userCartCopy:", userCartCopy);
-  const [totalPrice, setTotalPrice] = useState("");
+  const [totalPrice, setTotalPrice] = useState();
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
     getData();
-  }, [totalPrice]);
+    
+  }, []);
+
+  useEffect(() => {
+    totalCartPrice()
+    
+  }, [userCartCopy]);
 
   const getData = async () => {
     try {
@@ -47,9 +53,9 @@ function Cart(props) {
 
       let cartCopy = [...res.data];
       setUserCartCopy(cartCopy);
-
+   
       setIsFetching(false);
-      setTotalPrice(totalCartPrice());
+      
     } catch (error) {
       navigate("/error");
     }
@@ -59,8 +65,12 @@ function Cart(props) {
   const totalCartPrice = () => {
     let counter = 0;
 
-    userCart.forEach((eachItem) => (counter += eachItem.price));
-    return counter;
+    userCartCopy.forEach((eachItem) => {
+
+      counter = counter + (eachItem.price * eachItem.units)
+    
+    });
+    setTotalPrice(counter)
   };
   // Erase Item from online user cart
   const eraseItemFromCart = async (furnyId) => {
@@ -72,9 +82,10 @@ function Cart(props) {
       navigate("/error");
     }
   };
-  //TODO: Create a new model (quantity) in the BE for the units
+
   // Add ONE more unit to the item in the cartCopy
-  const addUnit = async (furnyId) => {
+  const addUnit = async ( furnyId) => {
+  
     const newAddCart = [];
     // Changing the units in the furnyId Selected
     userCartCopy.forEach((eachItem) => {
@@ -85,32 +96,28 @@ function Cart(props) {
 
       newAddCart.push(eachItem);
     });
-
+    
     setUserCartCopy(newAddCart);
+    totalCartPrice()
   };
 
   // remove ONE more unit to the item in the cart
   const removeUnit = async (furnyId) => {
-    const remove = async () =>{
-      await removeFromCartUserService({ furnyId: furnyId });
-    }
     const newAddCart = [];
     // Changing the units in the furnyId Selected
     userCartCopy.forEach((eachItem) => {
-      console.log("eachItem", eachItem);
+     
       if (eachItem._id === furnyId) {
         eachItem.units -= 1;
-        if(eachItem.units === 0){
-
+        if (eachItem.units === 0) {
           // TODO: add alert asking if user wants to remove
-         remove()
-      getData();
-      props.dataNumberItemsCart();
+          eraseItemFromCart(eachItem._id);
+          getData();
+          props.dataNumberItemsCart();
         }
       }
 
       newAddCart.push(eachItem);
-     
     });
 
     setUserCartCopy(newAddCart);
@@ -218,7 +225,7 @@ function Cart(props) {
                                   </div>
                                   <div style={{ width: "80px" }}>
                                     <MDBTypography tag="h5" className="mb-0">
-                                      {eachItem.price} €
+                                      {eachItem.price * eachItem.units} €
                                     </MDBTypography>
                                   </div>
 
